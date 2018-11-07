@@ -10,7 +10,6 @@ github_repo: annemame
 
 markdown: kramdown
 strict_front_matter: true
-theme: minima
 remote_theme: broccolini/swiss
 theme_color: black
 plugins:
