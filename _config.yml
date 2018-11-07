@@ -3,7 +3,8 @@ email: kp@annema.me
 description: >
   Occassional writings about programming and software.
 baseurl: ""
-url: ""
+url: https://annema.me
+enforce_ssl: annema.me
 
 twitter_username: klaaspieter
 github_username: klaaspieter
