@@ -37,7 +37,9 @@ Another way that is less typing is to append "" like so:
 
 # Handlebars
 
+{% raw %}
 Handlebars has two convenient helpers to aid in debugging. `{{log path.to.value}}` and `{{debugger}}` respectively log the value of the path or add a debugger statement at that location in your template.
+{% endraw %}
 
 # forEach
 
