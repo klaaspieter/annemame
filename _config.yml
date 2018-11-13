@@ -6,7 +6,7 @@ baseurl: ""
 url: https://annema.me
 enforce_ssl: annema.me
 
-twitter_username: klaaspieter
+social_username: klaaspieter
 github_username: klaaspieter
 github_repo: annemame
 
