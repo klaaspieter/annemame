@@ -4,8 +4,7 @@ My personal website.
 
 ## Tech
 
-- [Jekyll] static site generator
-- The amazing [Swiss Jekyll theme] ([source][Swiss theme source])
+- [tailwindcss]
 
 ## Installation
 
@@ -15,18 +14,4 @@ Clone the repo:
 git clone https://github.com/klaaspieter/annemame.git
 ```
 
-Install dependencies:
-
-```sh
-bundle install
-```
-
-Serve with [Jekyll]:
-
-```sh
-bundle exec jekyll serve
-```
-
-[Jekyll]: https://jekyllrb.com/
-[Swiss Jekyll theme]: https://broccolini.net/swiss/
-[Swiss theme source]: https://github.com/broccolini/swiss
+[Tailwind]: https://tailwindcss.com/
