@@ -24,4 +24,5 @@ ul {
   flex-direction: row;
   list-style-type: none;
   gap: 1em;
+  padding: 0;
 }
