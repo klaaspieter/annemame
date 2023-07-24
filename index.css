@@ -1,3 +1,18 @@
+@import url('vanilla.css');
+
+:root {
+  --link-color: #f97316;
+  --link-color-alt: #ea580c;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --link-color: #f97316;
+    --link-color-alt: #ea580c;
+  }
+}
+
 body {
   text-align: center;
   text-transform: uppercase;
