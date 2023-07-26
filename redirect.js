@@ -1,6 +1,6 @@
 (function() {
   function replacer(_, year, month, day, title) {
-    return `${year}-${month}-${day}-${title}.md`;
+    return `${year}-${month.padStart(2, 0)}-${day.padStart(2, 0)}-${title}.md`;
   }
 
   const isPost = location.pathname.includes("/blog/post");
@@ -9,8 +9,9 @@
     return;
   }
 
-  const newPath = location.pathname.replace(
-    /\/blog\/post\/(?<year>\d{4})\/(?<month>\d{2})\/(?<day>\d{2})\/(?<title>.*)/gm,
+  const pathname = location.pathname;
+  const newPath = pathname.replace(
+    /\/blog\/post\/(?<year>\d{4})\/(?<month>\d{1,2})\/(?<day>\d{1,2})\/(?<title>.*)/gm,
     replacer
   );
 
