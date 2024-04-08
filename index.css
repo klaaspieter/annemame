@@ -14,11 +14,11 @@
 }
 
 body {
-  text-align: center;
+  text-align: left;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
   height: 100%;
@@ -30,6 +30,7 @@ body {
 }
 
 h1, h2 {
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -42,5 +43,10 @@ ul {
   flex-direction: row;
   list-style-type: none;
   gap: 1em;
+  margin: 0;
   padding: 0;
+}
+
+p {
+  margin: 0 0 1rem 0;
 }
