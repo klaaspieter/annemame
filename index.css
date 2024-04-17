@@ -29,13 +29,14 @@ body {
   text-transform: uppercase;
 }
 
-h1, h2 {
+h1 {
   text-transform: uppercase;
   margin: 0;
 }
 
 h2 {
   font-weight: normal;
+  margin: 0;
 }
 
 ul {
