@@ -3,6 +3,9 @@
 :root {
   --link-color: #f97316;
   --link-color-alt: #ea580c;
+
+  --health-shortcuts-color: #FD1148;
+  --brb-color: #30B0C7;
 }
 
 
@@ -50,4 +53,14 @@ ul {
 
 p {
   margin: 0 0 1rem 0;
+}
+
+.health-shortcuts {
+  --link-color: var(--health-shortcuts-color);
+  --link-color-alt: var(--health-shortcuts-color);
+}
+
+.brb {
+  --link-color: var(--brb-color);
+  --link-color-alt: var(--brb-color);
 }
