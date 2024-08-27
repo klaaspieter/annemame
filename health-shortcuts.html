@@ -1,14 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index.css" />
     <title>annema.me</title>
     <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonProperties".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_HdDAqCx3sdqZSCFDThAkNqx64GxXL8w0CAk9ki6LIWF',{api_host:'https://eu.i.posthog.com', person_profiles: 'identified_only' // or 'always' to create profiles for anonymous users as well
-    })
+      !(function (t, e) {
+        var o, n, p, r;
+        e.__SV ||
+          ((window.posthog = e),
+          (e._i = []),
+          (e.init = function (i, s, a) {
+            function g(t, e) {
+              var o = e.split(".");
+              2 == o.length && ((t = t[o[0]]), (e = o[1])),
+                (t[e] = function () {
+                  t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+                });
+            }
+            ((p = t.createElement("script")).type = "text/javascript"),
+              (p.async = !0),
+              (p.src =
+                s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") +
+                "/static/array.js"),
+              (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(
+                p,
+                r
+              );
+            var u = e;
+            for (
+              void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
+                u.people = u.people || [],
+                u.toString = function (t) {
+                  var e = "posthog";
+                  return (
+                    "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e
+                  );
+                },
+                u.people.toString = function () {
+                  return u.toString(1) + ".people (stub)";
+                },
+                o =
+                  "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonProperties".split(
+                    " "
+                  ),
+                n = 0;
+              n < o.length;
+              n++
+            )
+              g(u, o[n]);
+            e._i.push([i, s, a]);
+          }),
+          (e.__SV = 1));
+      })(document, window.posthog || []);
+      posthog.init("phc_HdDAqCx3sdqZSCFDThAkNqx64GxXL8w0CAk9ki6LIWF", {
+        api_host: "https://eu.i.posthog.com",
+        person_profiles: "identified_only", // or 'always' to create profiles for anonymous users as well
+      });
     </script>
   </head>
   <body class="health-shortcuts">
@@ -16,10 +65,35 @@
     <h1>Health Shortcuts</h1>
     <h2>Quickly save data in Apple Health.</h2>
     <p>
-      <a href=mailto:health-shortcuts@annema.me>Feedback</a>
+      <a href="mailto:health-shortcuts@annema.me">Feedback</a>
     </p>
 
-    <a href="https://apps.apple.com/us/app/health-shortcuts/id6495061348?itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1713916800" alt="Download on the App Store" style="margin: 0; border-radius: 13px; width: 250px; height: 83px;"></a>
+    <section class="links">
+      <a
+        href="https://apps.apple.com/us/app/health-shortcuts/id6495061348?itsct=apps_box_badge&amp;itscg=30200"
+        style="
+          display: inline-block;
+          overflow: hidden;
+          border-radius: 13px;
+          width: 250px;
+          height: 83px;
+        "
+        ><img
+          src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1713916800"
+          alt="Download on the App Store"
+          style="margin: 0; border-radius: 13px; width: 250px; height: 83px"
+      /></a>
+
+      <a
+        href="https://www.producthunt.com/posts/health-shortcuts?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-health&#0045;shortcuts"
+        target="_blank"
+        ><img
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=484198&theme=light"
+          alt="Health&#0032;Shortcuts - Shortcuts&#0032;for&#0032;recording&#0032;in&#0032;Apple&#0032;Health | Product Hunt"
+          style="width: 250px; height: 54px"
+          width="250"
+          height="54"
+      /></a>
+    </section>
   </body>
 </html>
-

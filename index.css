@@ -1,13 +1,12 @@
-@import url('vanilla.css');
+@import url("vanilla.css");
 
 :root {
   --link-color: #f97316;
   --link-color-alt: #ea580c;
 
-  --health-shortcuts-color: #FD1148;
-  --brb-color: #30B0C7;
+  --health-shortcuts-color: #fd1148;
+  --brb-color: #30b0c7;
 }
-
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -58,6 +57,13 @@ p {
 .health-shortcuts {
   --link-color: var(--health-shortcuts-color);
   --link-color-alt: var(--health-shortcuts-color);
+
+  .links {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+  }
 }
 
 .brb {
