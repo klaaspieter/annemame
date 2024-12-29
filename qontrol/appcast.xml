@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Qontrol</title>
+        <item>
+            <title>1.0</title>
+            <pubDate>Sun, 29 Dec 2024 17:51:05 +0100</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+            <enclosure url="https://annema.me/qontrol/Qontrol%201.0%20(1).zip" length="5468318" type="application/octet-stream" sparkle:edSignature="//zAIHKncgQE4VFtea63lPyeXPpq5PELrpotcaYqJ91NPj78M0o0UW0kYeNEQm9dQpoLNoQT6a7Hj/BwZKZVAg=="/>
+        </item>
+    </channel>
+</rss>
