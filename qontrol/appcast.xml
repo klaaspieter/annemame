@@ -3,12 +3,23 @@
     <channel>
         <title>Qontrol</title>
         <item>
-            <title>1.0</title>
-            <pubDate>Sun, 29 Dec 2024 17:51:05 +0100</pubDate>
-            <sparkle:version>1</sparkle:version>
-            <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+            <title>0.1</title>
+            <pubDate>Mon, 30 Dec 2024 15:18:21 +0100</pubDate>
+            <sparkle:version>2</sparkle:version>
+            <sparkle:shortVersionString>0.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
-            <enclosure url="https://annema.me/qontrol/Qontrol%201.0%20(1).zip" length="5468318" type="application/octet-stream" sparkle:edSignature="//zAIHKncgQE4VFtea63lPyeXPpq5PELrpotcaYqJ91NPj78M0o0UW0kYeNEQm9dQpoLNoQT6a7Hj/BwZKZVAg=="/>
+            <enclosure url="https://annema.me/qontrol/Qontrol%200.1%20(2).zip" length="5691616" type="application/octet-stream" sparkle:edSignature="ajKK4bNSuzkbgjLKJBPOLQ4l0QFSfRRPfANPH6/lHBSbuoDbMUyKEvrxESl9xDatsP+I9W57SnDA/8gId8DxDA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://annema.me/qontrol/Qontrol2-1.delta" sparkle:deltaFrom="1" length="267486" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="QaQlMbcb+iHP5VjHHN1WM41BuWBeZMMSzT/PKBbXNZs1w9Bj94oEVuthajapjKSyC/1sWQqAG8JzJTw+YGPsBg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
+            <title>0.1</title>
+            <pubDate>Mon, 30 Dec 2024 15:26:18 +0100</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>0.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+            <enclosure url="https://annema.me/qontrol/Qontrol%200.1%20(1).zip" length="5466778" type="application/octet-stream" sparkle:edSignature="hd2NxqEhpmTYwOb+aPlgwEgDtMF7WNm6xJmr6eMy2xcRQ3C4Ju2uiPOAEpZxSKGm3m1zG4xrXwmyXXa5GN6iBQ=="/>
         </item>
     </channel>
 </rss>
