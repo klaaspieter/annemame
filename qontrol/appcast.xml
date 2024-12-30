@@ -4,6 +4,19 @@
         <title>Qontrol</title>
         <item>
             <title>0.1</title>
+            <pubDate>Mon, 30 Dec 2024 16:08:28 +0100</pubDate>
+            <sparkle:version>3</sparkle:version>
+            <sparkle:shortVersionString>0.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://annema.me/qontrol/Qontrol%200.1%20(3).html</sparkle:releaseNotesLink>
+            <enclosure url="https://annema.me/qontrol/Qontrol%200.1%20(3).zip" length="5697312" type="application/octet-stream" sparkle:edSignature="RbvA6nCIkmDVkGqvugBs6nqYy0LD9CEkJ9RY9BQK4Z7zrdKtSgoMioU0i6nebORusTmc/8lqs4Xg8l4tejLFAQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://annema.me/qontrol/Qontrol3-2.delta" sparkle:deltaFrom="2" length="462662" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="7hq0DqzqU/rWOPu1yKQTJtARAUJisXjF/lj4RwMRDBOXzPxQwCpSmWarlVGYm1NzmLda7k5y5cIyQZ/IJqgQBg=="/>
+                <enclosure url="https://annema.me/qontrol/Qontrol3-1.delta" sparkle:deltaFrom="1" length="676654" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="v8KOrA6yODRlAnxbh96mb+S8VaDLJ05SF2O8Z4XqxOGf2flN5iiDoQAPyaKOTu2g6exjyflPzYRw0DZvPCicDg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
+            <title>0.1</title>
             <pubDate>Mon, 30 Dec 2024 15:18:21 +0100</pubDate>
             <sparkle:version>2</sparkle:version>
             <sparkle:shortVersionString>0.1</sparkle:shortVersionString>
@@ -12,6 +25,7 @@
             <sparkle:deltas>
                 <enclosure url="https://annema.me/qontrol/Qontrol2-1.delta" sparkle:deltaFrom="1" length="267486" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="QaQlMbcb+iHP5VjHHN1WM41BuWBeZMMSzT/PKBbXNZs1w9Bj94oEVuthajapjKSyC/1sWQqAG8JzJTw+YGPsBg=="/>
             </sparkle:deltas>
+            <sparkle:releaseNotesLink>https://annema.me/qontrol/Qontrol%200.1%20(2).html</sparkle:releaseNotesLink>
         </item>
         <item>
             <title>0.1</title>
