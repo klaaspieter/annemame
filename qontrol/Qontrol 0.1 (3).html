@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- CSS Styles -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0 16px 0 8px;
+        font: normal 13px/19px -apple-system, BlinkMacSystemFont,
+          "Helvetica Neue", "Lucida Grande", sans-serif;
+        letter-spacing: -0.36px;
+        color: hsla(0, 0%, 0%, 0.85);
+        text-rendering: optimizeLegibility;
+        background-color: #fff;
+      }
+
+      /*Same style for all the headings (bullet proofing for wrong Markdown usage)*/
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 14px 0 9px 13px;
+        font-size: 15px;
+        font-weight: 600; /*Semibold*/
+        color: #000;
+        word-wrap: break-word;
+      }
+
+      ul,
+      ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        padding-left: 13px;
+        margin-bottom: 8px;
+      }
+
+      li::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: url("data:image/svg+xml;utf8,%3Csvg%20width%3D%226%22%20height%3D%226%22%20viewBox%3D%22154%205%206%206%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M157%2010a2%202%200%201%200%200-4%202%202%200%200%200%200%204zm0%201a3%203%200%201%201%200-6%203%203%200%200%201%200%206z%22%20fill%3D%22%23FD9800%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+        margin: 0 6px 0 -12px;
+        position: relative;
+        top: -1px;
+      }
+
+      hr {
+        display: block;
+        margin: 14px 0 14px -8px;
+        width: calc(100% + 21px);
+        height: 1px;
+        border: 0;
+        background: #f0f0f0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #f06e00;
+        transition: color 0.22s linear;
+      }
+
+      a:hover {
+        color: #f38b32;
+      }
+
+      /*Making sure we can have links on every heading (bullet proofing for wrong Markdown usage)*/
+      h1 a::before,
+      h2 a::before,
+      h3 a::before,
+      h4 a::before,
+      h5 a::before,
+      h6 a::before {
+        content: "\25B8";
+        margin-right: 0.35rem;
+        opacity: 0.25;
+        position: relative;
+        top: -1px;
+      }
+
+      h1 a,
+      h2 a,
+      h3 a,
+      h4 a,
+      h5 a,
+      h6 a {
+        margin-left: 0.25em;
+        color: #999;
+        text-transform: uppercase;
+        font-weight: normal;
+        font-size: 11px;
+        letter-spacing: 0.6px;
+      }
+
+      /*Special notes block*/
+      blockquote {
+        margin: 0 -8px;
+        padding: 6px 21px;
+        width: calc(100% - 20px);
+        font-size: 11px;
+        background: #fffbf0;
+        color: #4d3600;
+        border-bottom: 1px solid hsla(42, 100%, 51%, 0.15);
+        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.02);
+      }
+
+      blockquote p {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>New in Qontrol 0.1 (3)</h1>
+    <p></p>
+
+    <ul>
+      <li>
+        <strong>Improvement:</strong> Added “Check for Updates…” menu item
+      </li>
+    </ul>
+  </body>
+</html>
