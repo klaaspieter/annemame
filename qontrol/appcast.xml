@@ -3,6 +3,21 @@
     <channel>
         <title>Qontrol</title>
         <item>
+            <title>0.3</title>
+            <pubDate>Sun, 05 Jan 2025 08:47:13 +0100</pubDate>
+            <sparkle:version>5</sparkle:version>
+            <sparkle:shortVersionString>0.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
+            <sparkle:releaseNotesLink>https://annema.me/qontrol/Qontrol%200.3%20(5).html</sparkle:releaseNotesLink>
+            <enclosure url="https://annema.me/qontrol/Qontrol%200.3%20(5).zip" length="5708917" type="application/octet-stream" sparkle:edSignature="ctC5auldxZ7qe8vXhQvPncBeYGcWdlzR7QdlqoM9egg41kMzdLRx7OQJB8i6Is84FMDHsM4iOFlFfkPvkzQGAg=="/>
+            <sparkle:deltas>
+                <enclosure url="https://annema.me/qontrol/Qontrol5-4.delta" sparkle:deltaFrom="4" length="381934" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="V7hWwP6eKtVylQCUTm0tyOoGEHvpm3iHr44l/nTWjzmgEC13BJ+cuFx+ydCvUaahWDIJ0MFuDwE83Lg3DSpDBg=="/>
+                <enclosure url="https://annema.me/qontrol/Qontrol5-3.delta" sparkle:deltaFrom="3" length="784026" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="bGs4Hsh39cS6apzI3brptypH7VvaXLNfpphM6hBXSW6c13gtQN3MBKl9yWbcUkYbo+g7DYV4H3Ui/2Z8BPFoDw=="/>
+                <enclosure url="https://annema.me/qontrol/Qontrol5-2.delta" sparkle:deltaFrom="2" length="787558" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="QhWsPGzXouguRaYVxFLZq8ZeRGi+TqBEWh19a8vj1JFwHqWiLsTF0hRsXLqslgjVX/pdQdriZslI90ce2Lu4CQ=="/>
+                <enclosure url="https://annema.me/qontrol/Qontrol5-1.delta" sparkle:deltaFrom="1" length="791554" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="TtK6RTV+sMjmD24Pvo/nwMw3sHKYFLQ/W96Y/DzRRmDaTLX8Pyp3vaxFe8XGmyUID/NgNPM4qDcEDdHt6GLuAw=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.2</title>
             <pubDate>Thu, 02 Jan 2025 15:53:17 +0100</pubDate>
             <sparkle:version>4</sparkle:version>
@@ -28,18 +43,6 @@
                 <enclosure url="https://annema.me/qontrol/Qontrol3-2.delta" sparkle:deltaFrom="2" length="462662" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="7hq0DqzqU/rWOPu1yKQTJtARAUJisXjF/lj4RwMRDBOXzPxQwCpSmWarlVGYm1NzmLda7k5y5cIyQZ/IJqgQBg=="/>
                 <enclosure url="https://annema.me/qontrol/Qontrol3-1.delta" sparkle:deltaFrom="1" length="676654" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="v8KOrA6yODRlAnxbh96mb+S8VaDLJ05SF2O8Z4XqxOGf2flN5iiDoQAPyaKOTu2g6exjyflPzYRw0DZvPCicDg=="/>
             </sparkle:deltas>
-        </item>
-        <item>
-            <title>0.1</title>
-            <pubDate>Mon, 30 Dec 2024 15:18:21 +0100</pubDate>
-            <sparkle:version>2</sparkle:version>
-            <sparkle:shortVersionString>0.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.6</sparkle:minimumSystemVersion>
-            <enclosure url="https://annema.me/qontrol/Qontrol%200.1%20(2).zip" length="5691616" type="application/octet-stream" sparkle:edSignature="ajKK4bNSuzkbgjLKJBPOLQ4l0QFSfRRPfANPH6/lHBSbuoDbMUyKEvrxESl9xDatsP+I9W57SnDA/8gId8DxDA=="/>
-            <sparkle:deltas>
-                <enclosure url="https://annema.me/qontrol/Qontrol2-1.delta" sparkle:deltaFrom="1" length="267486" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="863040" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,en" sparkle:edSignature="QaQlMbcb+iHP5VjHHN1WM41BuWBeZMMSzT/PKBbXNZs1w9Bj94oEVuthajapjKSyC/1sWQqAG8JzJTw+YGPsBg=="/>
-            </sparkle:deltas>
-            <sparkle:releaseNotesLink>https://annema.me/qontrol/Qontrol%200.1%20(2).html</sparkle:releaseNotesLink>
         </item>
     </channel>
 </rss>
