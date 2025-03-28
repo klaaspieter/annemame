@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="fediverse:creator" content="@kp@mastodon.design" />
-    <link rel="stylesheet" href="/index.css" />
+
+    {% css %} {% include "vanilla.css" %} {% include "index.css" %} {% endcss %}
+    <link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
+
     <title>annema.me</title>
   </head>
   <body>

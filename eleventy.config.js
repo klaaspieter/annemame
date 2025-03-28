@@ -1,4 +1,6 @@
 export default async function (eleventyConfig) {
+  eleventyConfig.addBundle("css");
+
   return {
     markdownTemplateEngine: "njk",
     dataTemplateEngine: "njk",
