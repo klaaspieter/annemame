@@ -17,6 +17,9 @@
   --color-text-link: var(--color-accent);
 
   --space: var(--space-m);
+
+  --color-health-shortcuts-primary: #fd1148;
+  --color-brb-primary: #30b0c7;
 }
 
 body {
@@ -52,6 +55,14 @@ p {
 
 a {
   color: var(--color-text-link);
+}
+
+.health-shortcuts a {
+  color: var(--color-health-shortcuts-primary);
+}
+
+.brb a {
+  color: var(--color-brb-primary);
 }
 
 ul[role="list"],

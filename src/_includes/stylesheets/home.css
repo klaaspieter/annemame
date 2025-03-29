@@ -1,17 +1,4 @@
-:root {
-  --color-health-shortcuts-primary: #fd1148;
-  --color-brb-primary: #30b0c7;
-}
-
 .my-apps > *,
 .social > * {
   --space: var(--space-2xs);
-}
-
-.health-shortcuts {
-  color: var(--color-health-shortcuts-primary);
-}
-
-.brb {
-  color: var(--color-brb-primary);
 }
