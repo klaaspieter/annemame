@@ -1,0 +1,9 @@
+.cluster {
+  align-items: var(--cluster-vertical-alignment, center);
+  column-gap: var(--cluster-column-gap, var(--gutter, var(--space-s-m)));
+  display: flex;
+  flex-direction: var(--cluster-direction, row);
+  flex-wrap: var(--cluster-wrap, wrap);
+  justify-content: var(--cluster-horizontal-alignment, flex-start);
+  row-gap: var(--cluster-row-gap, var(--gutter, var(--space-s-m)));
+}

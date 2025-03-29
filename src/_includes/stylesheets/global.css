@@ -4,6 +4,7 @@
 {% include "stylesheets/global/font-size.css" %}
 
 {% include "stylesheets/compositions/stack.css" %}
+{% include "stylesheets/compositions/cluster.css" %}
 
 {% include "stylesheets/utilities/wrapper.css" %}
 {% include "stylesheets/utilities/uppercased.css" %}
@@ -50,4 +51,9 @@ p {
 
 a {
   color: var(--color-text-link);
+}
+
+ul[role="list"],
+ol[role="list"] {
+  padding: 0;
 }
