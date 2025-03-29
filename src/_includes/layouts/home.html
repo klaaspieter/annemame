@@ -1,27 +1,37 @@
 {% extends "layouts/base.html" %} {% block content %}
 
-<article>
-  <h1>Klaas Pieter Annema</h1>
-  <p>
+{% css %}
+{% include "stylesheets/home.css" %}
+{% endcss %}
+
+<div class="stack">
+  <div class="about-me">
+    <h1 class="uppercased">Klaas Pieter Annema</h1>
+    <p>
     <a href="https://posthog.com/blog/what-is-a-product-engineer"
-      >Product engineer</a
-    >
-    with 15 years of experience.
-  </p>
+       >Product engineer</a
+     >
+     with 15 years of experience.
+    </p>
+  </div>
 
-  <h2>My apps</h2>
-  <ul>
-    <li>
-      <a class="health-shortcuts" href="/health-shortcuts">Health Shortcuts</a>
-    </li>
-    <li><a class="brb" href="/brb">brb</a></li>
-  </ul>
+  <div class="stack my-apps">
+    <h2>My apps</h2>
+    <ul>
+      <li>
+        <a class="health-shortcuts" href="/health-shortcuts">Health Shortcuts</a>
+      </li>
+      <li><a class="brb" href="/brb">brb</a></li>
+    </ul>
+  </div>
 
-  <h2>Find me on</h2>
-  <ul>
-    <li><a rel="me" href="https://mastodon.design/@kp">Mastodon</a></li>
-    <li><a href="https://github.com/klaaspieter">GitHub</a></li>
-    <li><a href="https://linkedin.com/in/klaaspieter">LinkedIn</a></li>
-  </ul>
-</article>
+  <div class="stack social">
+    <h2>Find me on</h2>
+    <ul>
+      <li><a rel="me" href="https://mastodon.design/@kp">Mastodon</a></li>
+      <li><a href="https://github.com/klaaspieter">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/klaaspieter">LinkedIn</a></li>
+    </ul>
+  </div>
+</div>
 {% endblock %}
