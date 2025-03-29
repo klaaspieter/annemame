@@ -1,10 +1,12 @@
-{% extends "layouts/base.html" %} {% block content %}
+{% extends "layouts/base.html" %}
+
+{% block content %}
 
 {% css %}
 {% include "stylesheets/home.css" %}
 {% endcss %}
 
-<div class="stack">
+<article class="stack">
   <div class="about-me">
     <h1 class="uppercased">Klaas Pieter Annema</h1>
     <p>
@@ -33,5 +35,6 @@
       <li><a href="https://linkedin.com/in/klaaspieter">LinkedIn</a></li>
     </ul>
   </div>
-</div>
+</article>
+
 {% endblock %}
