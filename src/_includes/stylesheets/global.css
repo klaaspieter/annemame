@@ -23,6 +23,7 @@ body {
   background: var(--color-background);
   color: var(--color-text);
 
+  font-size: var(--step-0);
   font-family: system-ui, sans-serif;
 
   text-align: left;
