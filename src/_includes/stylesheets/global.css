@@ -55,12 +55,12 @@ p {
   font-size: var(--step-1);
 }
 
-a {
+a:not([class]) {
   color: var(--color-text);
   text-decoration-color: var(--color-accent);
 }
 
-a {
+a:not([class]) {
   text-decoration: none;
   color: var(--color-text);
   position: relative;
@@ -68,7 +68,7 @@ a {
   z-index: 1;
 }
 
-a:after {
+a:not([class]):after {
   content: '';
   display: block;
   height: 2px;
@@ -82,11 +82,11 @@ a:after {
   background: var(--color-accent);
 }
 
-a:hover {
+a:not([class]):hover {
   color: white;
 }
 
-a:hover:after {
+a:not([class]):hover:after {
   right: 0;
   left: 0;
   height: 100%;
