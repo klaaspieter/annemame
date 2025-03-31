@@ -1,11 +1,9 @@
-import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
-
 export default async function (eleventyConfig) {
   eleventyConfig.addBundle("css");
 
-  eleventyConfig.addWatchTarget("src/**/*.{svg,webp,png,jpg,jpeg,gif}");
-
-  eleventyConfig.addPlugin(eleventyImageTransformPlugin);
+  eleventyConfig.addPassthroughCopy({
+    "./src/public/": "/",
+  });
 
   return {
     markdownTemplateEngine: "njk",
