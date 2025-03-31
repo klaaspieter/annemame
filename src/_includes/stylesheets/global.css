@@ -24,6 +24,20 @@
   --color-github-accent: #1a1f25;
 }
 
+@media(prefers-color-scheme: dark) {
+  :root {
+    --color-accent: #f97316;
+    --color-background: #2d2d2d;
+    --color-text: #ffffff;
+
+    --color-text-link: var(--color-accent);
+
+    --space: var(--space-m);
+
+    --color-github-accent: #1a1f25;
+  }
+}
+
 body {
   background: var(--color-background);
   color: var(--color-text);
