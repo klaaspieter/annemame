@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="fediverse:creator" content="@kp@mastodon.design" />
 
+    {% include "partials/meta-info.html" %}
+
     {% css %} {% include "stylesheets/global.css" %}{% endcss %}
     <link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
 
@@ -16,5 +18,6 @@
     <div class="wrapper">
       {{ content | safe }}
     </div>
+
   </body>
 </html>

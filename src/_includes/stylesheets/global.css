@@ -54,15 +54,16 @@ p {
 }
 
 a {
-  color: var(--color-text-link);
+  color: var(--color-text);
+  text-decoration-color: var(--color-accent);
 }
 
-.health-shortcuts a {
-  color: var(--color-health-shortcuts-primary);
+.health-shortcuts {
+  --color-accent: var(--color-health-shortcuts-primary);
 }
 
-.brb a {
-  color: var(--color-brb-primary);
+.brb {
+  --color-accent: var(--color-brb-primary);
 }
 
 ul[role="list"],
