@@ -18,8 +18,10 @@
 
   --space: var(--space-m);
 
-  --color-health-shortcuts-primary: #fd1148;
-  --color-brb-primary: #30b0c7;
+  --color-health-shortcuts-accent: #fd1148;
+  --color-brb-accent: #30b0c7;
+  --color-mastodon-accent: #6364ff;
+  --color-github-accent: #1a1f25;
 }
 
 body {
@@ -91,11 +93,19 @@ a:hover:after {
 }
 
 .health-shortcuts {
-  --color-accent: var(--color-health-shortcuts-primary);
+  --color-accent: var(--color-health-shortcuts-accent);
 }
 
 .brb {
-  --color-accent: var(--color-brb-primary);
+  --color-accent: var(--color-brb-accent);
+}
+
+.github {
+  --color-accent: var(--color-github-accent);
+}
+
+.mastodon {
+  --color-accent: var(--color-mastodon-accent);
 }
 
 ul[role="list"],
