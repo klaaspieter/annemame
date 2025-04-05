@@ -10,6 +10,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: "Install dependencies"
+        run: ./bin/setup
+
       - name: Build the website
         run: ./bin/build
 
