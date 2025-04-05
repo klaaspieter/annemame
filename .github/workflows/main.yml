@@ -34,7 +34,7 @@ jobs:
           key: ${{ runner.os }}-eleventy-fetch-cache
 
       - run: ./bin/setup
-      - run: ./bin/build "/annemame/"
+      - run: ./bin/build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
