@@ -13,9 +13,10 @@ git clone https://github.com/klaaspieter/annemame.git
 ## Develop
 
 ```sh
-npx serve
+./bin/dev
 ```
 
 ## Deploy
 
-Any push to `main` is automatically deployed to GitHub pages.
+Any push to `main` is build using `./bin/build` and deployed to GitHub pages
+using [.github/workflows/main.yml](.github/workflows/main.yml).
