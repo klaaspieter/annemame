@@ -11,9 +11,12 @@
     {% include "partials/favicon.html" %}
 
     {% css %} {% include "stylesheets/global.css" %}{% endcss %}
+
     <link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
+    <script src="{% getBundleFileUrl "js" %}">
 
     <title>annema.me</title>
+
   </head>
   <body>
     <div class="wrapper">

@@ -4,6 +4,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
   eleventyConfig.addBundle("css");
+  eleventyConfig.addBundle("js");
 
   eleventyConfig.addPassthroughCopy({
     "./src/public/": "/",
