@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="fediverse:creator" content="@kp@mastodon.design" />
+
+    {% include "partials/meta-info.html" %}
+    {% include "partials/favicon.html" %}
+
+    {% css %} {% include "stylesheets/global.css" %}{% endcss %}
+    <link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
+
+    <title>annema.me</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      {{ content | safe }}
+    </div>
+
+  </body>
+</html>

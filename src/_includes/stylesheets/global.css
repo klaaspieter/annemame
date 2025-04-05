@@ -1,0 +1,128 @@
+{% include "stylesheets/_reset.css" %}
+
+{% include "stylesheets/global/space.css" %}
+{% include "stylesheets/global/font-size.css" %}
+
+{% include "stylesheets/compositions/stack.css" %}
+{% include "stylesheets/compositions/cluster.css" %}
+
+{% include "stylesheets/utilities/wrapper.css" %}
+{% include "stylesheets/utilities/uppercased.css" %}
+
+:root {
+  --color-accent: #f97316;
+  --color-background: #ffffff;
+  --color-text: #2d2d2d;
+
+  --color-text-link: var(--color-accent);
+
+  --space: var(--space-m);
+
+  --color-health-shortcuts-accent: #fd1148;
+  --color-brb-accent: #30b0c7;
+  --color-mastodon-accent: #6364ff;
+  --color-github-accent: #1a1f25;
+}
+
+@media(prefers-color-scheme: dark) {
+  :root {
+    --color-accent: #f97316;
+    --color-background: #2d2d2d;
+    --color-text: #ffffff;
+
+    --color-text-link: var(--color-accent);
+
+    --space: var(--space-m);
+
+    --color-github-accent: #1a1f25;
+  }
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+
+  font-size: var(--step-0);
+  font-family: system-ui, sans-serif;
+
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+:where(body, h1, h2, h3, h4, p, figure, blockquote, dl, dd) {
+    margin-block:0
+}
+
+h1 {
+  font-size: var(--step-5);
+}
+
+h2 {
+  font-weight: normal;
+}
+
+p {
+  font-size: var(--step-1);
+}
+
+a:not([class]) {
+  color: var(--color-text);
+  text-decoration-color: var(--color-accent);
+}
+
+a:not([class]) {
+  text-decoration: none;
+  color: var(--color-text);
+  position: relative;
+  transition: all .15s cubic-bezier(.2, 0, 0, 1);
+  z-index: 1;
+}
+
+a:not([class]):after {
+  content: '';
+  display: block;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition: all .15s cubic-bezier(.2, 0, 0, 1);
+  transform-origin: bottom center;
+  z-index: -1;
+  background: var(--color-accent);
+}
+
+a:not([class]):hover {
+  color: white;
+}
+
+a:not([class]):hover:after {
+  right: 0;
+  left: 0;
+  height: 100%;
+}
+
+.health-shortcuts {
+  --color-accent: var(--color-health-shortcuts-accent);
+}
+
+.brb {
+  --color-accent: var(--color-brb-accent);
+}
+
+.github {
+  --color-accent: var(--color-github-accent);
+}
+
+.mastodon {
+  --color-accent: var(--color-mastodon-accent);
+}
+
+ul[role="list"],
+ol[role="list"] {
+  padding: 0;
+}

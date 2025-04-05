@@ -1,0 +1,6 @@
+.wrapper {
+  margin-inline: auto;
+  width: clamp(16rem, 95vw, 50rem);
+  padding-inline: var(--space-xs);
+  position: relative;
+}

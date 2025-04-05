@@ -1,0 +1,41 @@
+---
+layout: "layouts/base.html"
+---
+
+{% block content %}
+
+{% css %}
+{% include "stylesheets/home.css" %}
+{% endcss %}
+
+<article class="stack">
+  <div class="about-me">
+    <h1 class="uppercased">Klaas Pieter Annema</h1>
+    <p>
+    <a href="https://posthog.com/blog/what-is-a-product-engineer"
+       >Product engineer</a
+     >
+     with 15 years of experience.
+    </p>
+  </div>
+
+  <div class="stack my-apps">
+    <h2>My apps</h2>
+    <ul role="list" class="cluster">
+      <li class="health-shortcuts">
+        <a href="/health-shortcuts">Health Shortcuts</a>
+      </li>
+      <li class="brb"><a href="/brb">brb</a></li>
+    </ul>
+  </div>
+
+  <div class="stack social">
+    <h2>Find me on</h2>
+    <ul role="list" class="cluster">
+      <li class="mastodon"><a rel="me" href="https://mastodon.design/@kp">Mastodon</a></li>
+      <li class="github"><a href="https://github.com/klaaspieter">GitHub</a></li>
+    </ul>
+  </div>
+</article>
+
+{% endblock %}

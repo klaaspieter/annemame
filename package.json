@@ -1,0 +1,25 @@
+{
+  "name": "annemame",
+  "version": "1.0.0",
+  "description": "My personal website.",
+  "main": "redirect.js",
+  "scripts": {
+    "dev": "npx eleventy --serve",
+    "build": "npx eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klaaspieter/annemame.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/klaaspieter/annemame/issues"
+  },
+  "homepage": "https://github.com/klaaspieter/annemame#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
