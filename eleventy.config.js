@@ -1,31 +1,7 @@
-import pluginFilters from "./_config/filters.js";
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
-import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 export default async function (eleventyConfig) {
-  eleventyConfig.addPlugin(pluginFilters);
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
-
-  eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
-    // Output formats for each image.
-    formats: ["avif", "webp", "auto"],
-
-    widths: [400, 800, 1200, "auto"],
-
-    failOnError: false,
-    htmlOptions: {
-      imgAttributes: {
-        // e.g. <img loading decoding> assigned on the HTML tag will override these values.
-        loading: "lazy",
-        decoding: "async",
-        sizes: [400, 800, 1200, "auto"],
-      },
-    },
-
-    sharpOptions: {
-      animated: true,
-    },
-  });
 
   eleventyConfig.addBundle("css", {
     transforms: [
