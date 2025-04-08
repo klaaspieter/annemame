@@ -16,11 +16,17 @@
     <script src="{% getBundleFileUrl "js" %}"></script>
 
     <title>annema.me</title>
-
   </head>
   <body>
     <div class="wrapper">
       {{ content | safe }}
+
+      {% if isCSSNakedDay %}
+      <p>
+      In celebration of <a href="https://css-naked-day.org/">CSS naked day</a> all of this page's styles are disabled
+      Because sementic markup works without CSS.
+      </p>
+      {% endif %}
     </div>
   </body>
 </html>
