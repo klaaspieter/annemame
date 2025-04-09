@@ -18,6 +18,10 @@
 
   --space: var(--space-m);
 
+  --color-border: #d8dee4;
+  --border-radius: 5px;
+  --box-shadow-card: 0 0 0 1px var(--color-border), 0 1px 5px rgba(12, 12, 12, 0.05), 0 0 40px rgba(12, 12, 12, 0.015);
+
   --color-health-shortcuts-accent: #fd1148;
   --color-brb-accent: #30b0c7;
   --color-mastodon-accent: #6364ff;
@@ -51,6 +55,8 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+
+  margin-block-end: var(--space-m);
 }
 
 :where(body, h1, h2, h3, h4, p, figure, blockquote, dl, dd) {
@@ -106,6 +112,12 @@ a:not([class]):hover:after {
   height: 100%;
 }
 
+.my-apps > *,
+.social > * {
+  --space: var(--space-2xs);
+  --gutter: var(--space-xs);
+}
+
 .health-shortcuts {
   --color-accent: var(--color-health-shortcuts-accent);
 }
@@ -125,4 +137,20 @@ a:not([class]):hover:after {
 ul[role="list"],
 ol[role="list"] {
   padding: 0;
+}
+
+.made {
+  --cluster-direction: column;
+  --cluster-vertical-alignment: flex-start;
+  --gutter: var(--space-3xs);
+  border-radius: var(--border-radius);
+  object-fit: contain;
+  height: auto;
+  box-shadow: var(--box-shadow-card);
+  padding: var(--space-s);
+}
+
+.made img {
+  height: auto;
+  border-radius: var(--border-radius);
 }

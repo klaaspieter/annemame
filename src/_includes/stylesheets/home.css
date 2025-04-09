@@ -1,5 +1,0 @@
-.my-apps > *,
-.social > * {
-  --space: var(--space-2xs);
-  --gutter: var(--space-xs);
-}
