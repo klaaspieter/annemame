@@ -22,6 +22,10 @@ export default async function (eleventyConfig) {
     "./src/public/": "/",
   });
 
+  eleventyConfig.addCollection("blog", (collection) => {
+    return [...collection.getFilteredByGlob("./src/posts/*.md")].reverse();
+  });
+
   return {
     markdownTemplateEngine: "njk",
     dataTemplateEngine: "njk",
