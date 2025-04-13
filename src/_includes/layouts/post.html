@@ -1,0 +1,17 @@
+---
+layout: "layouts/base.html"
+---
+
+{% css %} {% include "node_modules/prismjs/themes/prism-okaidia.css" %} {%
+endcss %}
+
+<h1>{{ title }}</h1>
+<ul class="post-metadata">
+  <li>
+    <time datetime="{{ page.date | htmlDateString }}"
+      >{{ page.date | readableDate }}</time
+    >
+  </li>
+</ul>
+
+{{ content | safe }}
