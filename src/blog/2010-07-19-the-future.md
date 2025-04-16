@@ -1,23 +1,45 @@
 ---
-title: The future
-date: '2010-07-19T15:33:00.000+02:00'
+title: Find time zones where it's currently a certain time
+date: '2016-05-05T10:18:00.000+02:00'
 ---
 
-Most of you probably already know, but for those who don’t; the company I work at, [Sofa][] was acquired by [Facebook][Acquisition blogpost]. For reasons I can’t disclose I was not part of the acquisition.
+For a project I'm working I needed a function that returns the time zones where it's currently 9am. I generalized the function to be able to find time zones where it's currently any time. My Swift implementation was inspired by this [stackoverflow answer][], providing code for the same problem in Ruby.
 
-[Sofa]: http://www.madebysofa.com
-[Acquisition blogpost]: http://www.madebysofa.com/blog/facebook-acquires-sofa/
+[stackoverflow answer]: http://stackoverflow.com/a/36284082/1555903
 
-The last couple of weeks have been a very emotional and busy period. Over the course of two weeks I went from having a job I enjoyed, to moving to the Bay Area for a job at Facebook, to having no job at all. In other words my future was destroyed, recreated and destroyed again. 
+```
+func timeZonesWhereItIs(hour: Int, _ minute: Int = 0) -> [NSTimeZone] {
+  let calendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian)!
+  calendar.timeZone = NSTimeZone(name: "UTC")!
+  let currentUTCTime = NSDate()
 
-Even though Facebook wasn’t an option, I didn’t want to waste the opportunity to move to the US. I got a ton of job offers during WWDC and I spend most of my time pursuing them trying to find a job in San Francisco.
+  return NSTimeZone.knownTimeZoneNames().flatMap(NSTimeZone.init).filter { timeZone in
+      let components = calendar.componentsInTimeZone(timeZone, fromDate: NSDate())
+      components.hour = hour
+      components.minute = minute
+      let date = calendar.dateFromComponents(components)!
 
-While I was interviewing at another company I got an email from Sofa’s partner in [Checkout][], [Acclivity][]. They wanted me to stop by New Jersey on my way back home to talk about my future and offered me an opportunity to continue development on [Enstore][] and Checkout. Although I had set my mind on San Francisco this was an opportunity too good to pass by. 
+      return calendar.isDate(date, equalToDate: currentUTCTime, toUnitGranularity: .Hour)
+  }
+}
+```
 
-[Acclivity]: http://acclivitysoftware.com
-[Checkout]: http://www.checkoutapp.com
-[Enstore]: http://www.enstore.com
+Usage:
 
-I’ll be part of a newly formed NYC based company responsible for Enstore and Checkout. My wife and I will be moving to New York City as soon as my visa is arranged. Suggestions where to live, eat and spend our spare time are very welcome.
+```
+timeZonesWhereItIs(12, 14)
+```
 
-In closing I would like to thank all the companies that offered me a job and all the great people that helped me out trying to find a new job! The last couple of months have been a hard and emotional period, but I’m sure the future will make up for it.
+To find a time zone at each hour offset use it as follows:
+
+```
+func timesZonesForEveryHour() -> [NSTimeZone] {
+  return (0..<24).flatMap { timeZonesWhereItIs($0).first }
+}
+```
+
+Note that there are time zones that are offset by [30 and 15 minutes][]. This function won't return those.
+
+[30 and 15 minutes]: https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
+
+Have fun.

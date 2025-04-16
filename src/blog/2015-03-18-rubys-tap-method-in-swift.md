@@ -1,109 +1,45 @@
 ---
-title: Ruby's tap method in Swift
-date: '2015-03-18T13:38:00.000+01:00'
+title: Find time zones where it's currently a certain time
+date: '2016-05-05T10:18:00.000+02:00'
 ---
 
-Ruby has a nice method called `tap`, which I wanted to try and port to Swift. To learn what it does, let’s take a look at [Ruby’s documentation](http://ruby-doc.org/core-2.2.0/Object.html#method-i-tap):
+For a project I'm working I needed a function that returns the time zones where it's currently 9am. I generalized the function to be able to find time zones where it's currently any time. My Swift implementation was inspired by this [stackoverflow answer][], providing code for the same problem in Ruby.
 
-> Yields self to the block, and then returns self. The primary purpose of this method is to “tap into” a method chain, in order to perform operations on intermediate results within the chain.
+[stackoverflow answer]: http://stackoverflow.com/a/36284082/1555903
 
-Yeah, right. I don’t really know what that means. Googling yields (no pun intended) many contrived examples like these:
+```
+func timeZonesWhereItIs(hour: Int, _ minute: Int = 0) -> [NSTimeZone] {
+  let calendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian)!
+  calendar.timeZone = NSTimeZone(name: "UTC")!
+  let currentUTCTime = NSDate()
 
-    [1, 2, 3, 4].tap &:reverse! # [4, 3, 2, 1]
+  return NSTimeZone.knownTimeZoneNames().flatMap(NSTimeZone.init).filter { timeZone in
+      let components = calendar.componentsInTimeZone(timeZone, fromDate: NSDate())
+      components.hour = hour
+      components.minute = minute
+      let date = calendar.dateFromComponents(components)!
 
-In Swift the same can be written as:
+      return calendar.isDate(date, equalToDate: currentUTCTime, toUnitGranularity: .Hour)
+  }
+}
+```
 
-    tap([1, 2, 3, 4], reverse) // [4, 3, 2, 1]
+Usage:
 
-A less contrived example would be:
+```
+timeZonesWhereItIs(12, 14)
+```
 
-    User.new.tap do |user|
-        user.name = "Yukihiro Matsumoto"
-        user.known_for = "Ruby"
-    end
+To find a time zone at each hour offset use it as follows:
 
-In the latter case tap is acting as a sort of [improptu builder](http://www.annema.me/the-builder-pattern-in-swift). In Swift:
+```
+func timesZonesForEveryHour() -> [NSTimeZone] {
+  return (0..<24).flatMap { timeZonesWhereItIs($0).first }
+}
+```
 
-    tap(user) {
-        $0.name = "Chris Lattner"
-        $0.knownFor = "Swift"
-    }
+Note that there are time zones that are offset by [30 and 15 minutes][]. This function won't return those.
 
-Note that the previous example requires every property of the user to be mutable (`var`). This example should only be seen as a comparison to Ruby. Please don’t do this in your actual code unless you absolutely have to.
+[30 and 15 minutes]: https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
 
-That said, we’ve established a public API, it’s time to start implementing. If you want to follow along; I’ve made a [playground available](https://gist.github.com/klaaspieter/9d8ce4485007fcb973b7). 
-
-In the Ruby source [tap](https://github.com/ruby/ruby/blob/e28c3d5df4f5abc83e0d2de34e7ebf675c96a307/object.c#L684-L689) is implemented like so: 
-
-    VALUE
-    rb_obj_tap(VALUE obj)
-    {
-        rb_yield(obj);
-        return obj;
-    }
-
-Translating that to actual Ruby:
-
-    class Object
-      def tap
-        yield self
-        self
-      end
-    end
-
-My first attempt was a copy of Ruby’s implementation, but in a global function. I’m not a huge fan of the global functions in Swift, but it works out nicely because we won’t have to extend any existing objects. 
-
-    func tap(object: AnyObject, block: (AnyObject) -> ()) -> AnyObject {
-        block(object)
-        return object
-    }
-
-Great, we threw out all type safety in an attempt to be as dynamic as Ruby. It also doesn’t compile.
-
-Let’s introduce some generics:
-
-    func tap<A>(var object: A, block: (inout A) -> ()) -> A {
-        block(&object)
-        return object
-    }
-
-This does compile, and it’s type safe to boot:
-
-    tap([1, 2, 3], reverseInPlace)
-
-Note that Swift doesn’t have a built-in reverse in place method like Ruby does. If you’re interested in what that looks like; take a look at [the gist](https://gist.github.com/klaaspieter/9d8ce4485007fcb973b7).
-
-A less contrived example would be:
-
-    tap(NSDateComponents()) {
-        $0.day = 18
-        $0.month = 06
-        $0.year = 1986
-        $0.calendar = NSCalendar.currentCalendar()
-    }.date
-
-If you got this far, you might be wondering: do we need a `tap` function? The answer is: maybe. In Objective-C we could use [GCC code block evaluation](http://www.annema.me/builder-and-gcc-code-block-evaluation) to similar effect. In Swift we should be able to write:
-    
-    let date = {
-        let c = NSDateComponents()
-        c.day = 18
-        c.month = 06
-        c.year = 1986
-        c.calendar = NSCalendar.currentCalendar()
-        return c
-    }().date
-
-Unfortunately this confuses the type system. It is unable to infer the return type of the block. Instead we have to write:
-
-    let date = { () -> NSDateComponents in
-        let c = NSDateComponents()
-        c.day = 18
-        c.month = 06
-        c.year = 1986
-        c.calendar = NSCalendar.currentCalendar()
-        return c
-    }().date
-
-For now, `tap` is a safer and arguably more readable alternative but it’s likely that the Swift compiler will solve the entire issue more elegantly in the future.
-
-**Update**: Several people on Twitter have pointed out to me that my implementation wasn’t an exact reproduction. The post has been updated with a better implementation. If you’re interested in my incorrect implementations take a look at the revision history of [the gist](https://gist.github.com/klaaspieter/9d8ce4485007fcb973b7/revisions).
+Have fun.

@@ -1,20 +1,45 @@
 ---
-title: Announcing autonib2cib
-date: '2011-03-05T20:20:00.000+01:00'
+title: Find time zones where it's currently a certain time
+date: '2016-05-05T10:18:00.000+02:00'
 ---
 
-Some time ago I posted a [gist][] for a command line utility that automatically nib2cibs changed nibs. During the weekend I've rewritten the utility, making it more reliable with newly created nibs and nibs containing resources.
+For a project I'm working I needed a function that returns the time zones where it's currently 9am. I generalized the function to be able to find time zones where it's currently any time. My Swift implementation was inspired by this [stackoverflow answer][], providing code for the same problem in Ruby.
 
-[gist]:https://gist.github.com/799190
-[github repo]: https://github.com/klaaspieter/autonib2cib
+[stackoverflow answer]: http://stackoverflow.com/a/36284082/1555903
 
-I've also moved the code (all 100 lines of it) from the gist to it's own [github repo][]. If you have a feature request or find a bug, please [create an issue][] or even better, a [pull request][].
+```
+func timeZonesWhereItIs(hour: Int, _ minute: Int = 0) -> [NSTimeZone] {
+  let calendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian)!
+  calendar.timeZone = NSTimeZone(name: "UTC")!
+  let currentUTCTime = NSDate()
 
-[create an issue]: https://github.com/klaaspieter/autonib2cib/issues
-[pull request]: https://github.com/klaaspieter/autonib2cib/pull/new/master
+  return NSTimeZone.knownTimeZoneNames().flatMap(NSTimeZone.init).filter { timeZone in
+      let components = calendar.componentsInTimeZone(timeZone, fromDate: NSDate())
+      components.hour = hour
+      components.minute = minute
+      let date = calendar.dateFromComponents(components)!
 
-Take a look at the [README][] for installation instructions. After installing you can start monitoring your nibs by running `autonib2cib <resource directory>` in your terminal.
+      return calendar.isDate(date, equalToDate: currentUTCTime, toUnitGranularity: .Hour)
+  }
+}
+```
 
-[README]:https://github.com/klaaspieter/autonib2cib#readme
+Usage:
 
-Cappuccino has been very successful at preserving the customary 'code and refresh' workflow for web developers. However, as any developer with more than a handful of cibs knows, having to manually run nib2cib breaks this workflow. Autonib2cib will solve this problem by automating the nib2cib process.
+```
+timeZonesWhereItIs(12, 14)
+```
+
+To find a time zone at each hour offset use it as follows:
+
+```
+func timesZonesForEveryHour() -> [NSTimeZone] {
+  return (0..<24).flatMap { timeZonesWhereItIs($0).first }
+}
+```
+
+Note that there are time zones that are offset by [30 and 15 minutes][]. This function won't return those.
+
+[30 and 15 minutes]: https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
+
+Have fun.

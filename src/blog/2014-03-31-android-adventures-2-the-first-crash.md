@@ -1,24 +1,45 @@
 ---
-title: 'Android adventures #2 - The first crash'
-date: '2014-03-31T17:12:00.000+02:00'
+title: Find time zones where it's currently a certain time
+date: '2016-05-05T10:18:00.000+02:00'
 ---
 
-Last week we introduced bug fix monday's at Karma. The goal is to have a dedicated day to fix bugs that we usually don't have time for. Because, you know, features are better.
+For a project I'm working I needed a function that returns the time zones where it's currently 9am. I generalized the function to be able to find time zones where it's currently any time. My Swift implementation was inspired by this [stackoverflow answer][], providing code for the same problem in Ruby.
 
-In Android I've had a crasher for a while that falls into this category. With every release I classify it as a nice to have and end up not getting around to it. On the first bug fix monday I decided to tackle it. Problem is I have no clue why it happens.
+[stackoverflow answer]: http://stackoverflow.com/a/36284082/1555903
 
-Luckily the code was also in need of a refactor. Without a reliable way to reproduce I hope the refactor fixed the problem, but if it doesn't I found some useful features in Crashlytics to help with debugging.
+```
+func timeZonesWhereItIs(hour: Int, _ minute: Int = 0) -> [NSTimeZone] {
+  let calendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian)!
+  calendar.timeZone = NSTimeZone(name: "UTC")!
+  let currentUTCTime = NSDate()
 
-First, instead of crashing I catch the NullPointerException causing the crash and use [`Crashlytics.logException(e);`](http://support.crashlytics.com/knowledgebase/articles/202805-logging-caught-exceptions) to send it as a non-fatal crash. This gives me the same information as I currently have, but without affecting the user. 
+  return NSTimeZone.knownTimeZoneNames().flatMap(NSTimeZone.init).filter { timeZone in
+      let components = calendar.componentsInTimeZone(timeZone, fromDate: NSDate())
+      components.hour = hour
+      components.minute = minute
+      let date = calendar.dateFromComponents(components)!
 
-I dislike catching unchecked exceptions though because I could be hiding a different problem too. In order to actually fix (instead of hide) the issue I'll need more information. 
+      return calendar.isDate(date, equalToDate: currentUTCTime, toUnitGranularity: .Hour)
+  }
+}
+```
 
-My assumption is that the crasher is related to the Fragment lifecycle thus I want to know more about it's state when the crash happens. The `Fragment` class has method called [`dump`](http://developer.android.com/reference/android/app/Fragment.html#dump(java.lang.String, java.io.FileDescriptor, java.io.PrintWriter, java.lang.String[])) but it's usage is a bit obscure to a beginning Java developer like myself. It took some googling and trial and error but this is the working solution:
+Usage:
 
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    dump("", null, new PrintWriter(outputStream, true), null);
-    Crashlytics.log(Log.INFO, TAG, outputStream.toString());
+```
+timeZonesWhereItIs(12, 14)
+```
 
-This writes information about fragment to an output stream which is then logged as a string. Crashlytics will write this to LogCat and also [send it with the crash report](http://support.crashlytics.com/knowledgebase/articles/120066-how-do-i-use-logging).
+To find a time zone at each hour offset use it as follows:
 
-Hopefully the crasher has been fixed but if it isn't I'll definitely have more data to diagnose it.
+```
+func timesZonesForEveryHour() -> [NSTimeZone] {
+  return (0..<24).flatMap { timeZonesWhereItIs($0).first }
+}
+```
+
+Note that there are time zones that are offset by [30 and 15 minutes][]. This function won't return those.
+
+[30 and 15 minutes]: https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
+
+Have fun.

@@ -1,16 +1,45 @@
 ---
-title: NSConference MINI 2010 Sessions Online
-date: '2010-07-22T17:46:00.000+02:00'
+title: Find time zones where it's currently a certain time
+date: '2016-05-05T10:18:00.000+02:00'
 ---
 
-This year, European developers had a hard time attending the [WWDC](http://developer.apple.com/wwdc), Apple's developers conference. The announcement was to late, forcing developers to arrange an entire inter continental trip in a relative short amount of time. There was also the pretty steep price and of course it was sold out within just 8 days!
+For a project I'm working I needed a function that returns the time zones where it's currently 9am. I generalized the function to be able to find time zones where it's currently any time. My Swift implementation was inspired by this [stackoverflow answer][], providing code for the same problem in Ruby.
 
-Luckily the community took care of us. The Mac Developer Network hosted a mini NSConference during WWDC. Wanting to help out, I gave a talk about the [Cappuccino][] frameworks.
+[stackoverflow answer]: http://stackoverflow.com/a/36284082/1555903
 
-[Cappuccino]:http://cappuccino.org
+```
+func timeZonesWhereItIs(hour: Int, _ minute: Int = 0) -> [NSTimeZone] {
+  let calendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian)!
+  calendar.timeZone = NSTimeZone(name: "UTC")!
+  let currentUTCTime = NSDate()
 
-My session and all the others given during NSConference MINI are now available at the [Mac Developer Network][] website. You can get all of the sessions in one pack for 50 dollars[^1].
+  return NSTimeZone.knownTimeZoneNames().flatMap(NSTimeZone.init).filter { timeZone in
+      let components = calendar.componentsInTimeZone(timeZone, fromDate: NSDate())
+      components.hour = hour
+      components.minute = minute
+      let date = calendar.dateFromComponents(components)!
 
-[Mac Developer Network]:http://www.mac-developer-network.com/video/video101038.html
+      return calendar.isDate(date, equalToDate: currentUTCTime, toUnitGranularity: .Hour)
+  }
+}
+```
 
-[^1]: As far as I'm aware there's no way to buy individual sessions, so if you're only interested in one talk you're still going to have to pay the full sum for all the sessions. 
+Usage:
+
+```
+timeZonesWhereItIs(12, 14)
+```
+
+To find a time zone at each hour offset use it as follows:
+
+```
+func timesZonesForEveryHour() -> [NSTimeZone] {
+  return (0..<24).flatMap { timeZonesWhereItIs($0).first }
+}
+```
+
+Note that there are time zones that are offset by [30 and 15 minutes][]. This function won't return those.
+
+[30 and 15 minutes]: https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
+
+Have fun.

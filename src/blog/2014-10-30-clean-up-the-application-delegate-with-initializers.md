@@ -1,82 +1,45 @@
 ---
-title: Clean up the application delegate with initializers
-date: '2014-10-30T17:48:00.000+01:00'
+title: Find time zones where it's currently a certain time
+date: '2016-05-05T10:18:00.000+02:00'
 ---
 
-The application delegate has a tendency to become unwieldy. It provides a ton of callbacks to respond to about every possible state change of your app. The method that grows quickest is usually `applicationDidFinishLaunching:withOptions:`<sup>[citation needed]</sup>. From preloading content for a better experience, to configuration third party services, it all tends to end up in that same method.
+For a project I'm working I needed a function that returns the time zones where it's currently 9am. I generalized the function to be able to find time zones where it's currently any time. My Swift implementation was inspired by this [stackoverflow answer][], providing code for the same problem in Ruby.
 
-I’ve been using the concepts of initializers recently. An initializer is an object that conforms to the `Initializer` protocol with just one required method: `performWithConfiguration:`.
+[stackoverflow answer]: http://stackoverflow.com/a/36284082/1555903
 
-You might wonder what the configuration argument is, but for now I want to focus on the concept of initializers. For the purpose of this blog post it is sufficient to think of the configuration object as a dictionary that contains configuration options. For example: keys for third party services, or the log level.
+```
+func timeZonesWhereItIs(hour: Int, _ minute: Int = 0) -> [NSTimeZone] {
+  let calendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian)!
+  calendar.timeZone = NSTimeZone(name: "UTC")!
+  let currentUTCTime = NSDate()
 
-Let’s take a look at an initializer implementation. This is the initializer I use to configure HockeyApp in the [Karma app][].
+  return NSTimeZone.knownTimeZoneNames().flatMap(NSTimeZone.init).filter { timeZone in
+      let components = calendar.componentsInTimeZone(timeZone, fromDate: NSDate())
+      components.hour = hour
+      components.minute = minute
+      let date = calendar.dateFromComponents(components)!
 
-[Karma app]: https://itunes.apple.com/us/app/karma-wifi/id673069729?ls=1&mt=8
+      return calendar.isDate(date, equalToDate: currentUTCTime, toUnitGranularity: .Hour)
+  }
+}
+```
 
-      - (void)performWithConfiguration:(id<Configuration>)configuration;
-    {
-        if (![configuration settingForKey:HockeyAppIdentifierKey]) {
-            DDLogWarn(@"No Hockey Identifier in configuration: %@", configuration);
-            return;
-        }
+Usage:
 
-        BITHockeyManager *manager = [BITHockeyManager sharedHockeyManager];
-        id delegate = [UIApplication sharedApplication].delegate;
-        [manager configureWithIdentifier:[configuration settingForKey:HockeyAppIdentifierKey] delegate:delegate];
-        manager.disableCrashManager = [[configuration settingForKey:HockeyAppCrashesDisabledKey] boolValue];
-        manager.crashManager.crashManagerStatus = BITCrashManagerStatusAutoSend;
-        [manager.authenticator authenticateInstallation];
-        [manager startManager];
-    }
+```
+timeZonesWhereItIs(12, 14)
+```
 
-Initializers aren’t always about third party services. The following initializer preloads the store whenever the app launches. Notice that it completely ignores the configuration argument:
+To find a time zone at each hour offset use it as follows:
 
-    @implementation StoreInitializer
+```
+func timesZonesForEveryHour() -> [NSTimeZone] {
+  return (0..<24).flatMap { timeZonesWhereItIs($0).first }
+}
+```
 
-    - (void)performWithConfiguration:(id<Configuration>)configuration;
-    {
-        [[ProductFetcher sharedFetcher] fetch];
-    }
+Note that there are time zones that are offset by [30 and 15 minutes][]. This function won't return those.
 
-    - (BOOL)shouldPerformWhenApplicationEntersForeground;
-    {
-        return YES;
-    }
+[30 and 15 minutes]: https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
 
-    @end
-
-This initializer also implements the `shouldPerformWhenApplicationEntersForeground` optional method. This method allows initializers to let the application delegate know they should also be run when the application enters the foreground.
-
-Now all that is left is running the initializers every time the app launches. In your app delegate simply add the following to `application:didFinishLaunchingWithOptions:`:
-
-    [self.initializers makeObjectsPerformSelector:@selector(performWithConfiguration:) withObject:[Configuration defaultConfiguration]]; 
-
-You can run initializers when the application enters the foreground by adding this to the `applicationWillEnterForeground:` method:
-
-    [self.initializers enumerateObjectsUsingBlock:^(id<Initializer> initializer, NSUInteger idx, BOOL *stop) {
-        if ([initializer respondsToSelector:@selector(shouldPerformWhenApplicationEntersForeground)]
-            && [initializer shouldPerformWhenApplicationEntersForeground]) {
-            [initializer performWithConfiguration:[Configuration defaultConfiguration]];
-        }
-    }];
-
-In both examples `self.initializers` is an array of initializers. In the Karma app the property is implemented like this:
-
-      - (NSArray *)initializers;
-    {
-        if (!_initializers) {
-            _initializers = @[
-                [[LoggingInitializer alloc] init],
-                [[HockeyInitializer alloc] init],
-                [[WontonInitializer alloc] init],
-                [[FacebookInitializer alloc] init],
-                [[StoryboardInitializer alloc] init],
-                [[StoreInitializer alloc] init],,
-                [[APNInitializer alloc] init]
-            ];
-        }
-
-        return _initializers;
-    }
-
-By encapsulating initialization logic into it’s own object you can keep the application delegate just that much cleaner. If by this point you’re wondering what that configuration argument really is. Be patient. That will be the subject of a next post.
+Have fun.

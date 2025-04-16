@@ -1,47 +1,45 @@
 ---
-title: Builder and GCC Code Block Evaluation
-date: '2014-05-19T18:04:00.000+02:00'
+title: Find time zones where it's currently a certain time
+date: '2016-05-05T10:18:00.000+02:00'
 ---
 
-My post about the [builder pattern][] got great responses and a lot of people offered alternative solutions to the same problem. The most popular suggestion was to use [GCC Code Block Evaluation](http://nshipster.com/new-years-2014/#gcc-code-block-evaluation-c-extension) without the separate builder object. Using the pizza example from the previous post it looks like this:
+For a project I'm working I needed a function that returns the time zones where it's currently 9am. I generalized the function to be able to find time zones where it's currently any time. My Swift implementation was inspired by this [stackoverflow answer][], providing code for the same problem in Ruby.
 
-    Pizza *pizza = ({
-        Pizza *builder = [[Pizza alloc] init];
-        builder.size = 10.0;
-        builder.pepperoni = YES;
-        builder.mushrooms = YES;
-        builder;
-    });
+[stackoverflow answer]: http://stackoverflow.com/a/36284082/1555903
 
-[builder pattern]: http://www.annema.me/the-builder-pattern-in-objective-c
+```
+func timeZonesWhereItIs(hour: Int, _ minute: Int = 0) -> [NSTimeZone] {
+  let calendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian)!
+  calendar.timeZone = NSTimeZone(name: "UTC")!
+  let currentUTCTime = NSDate()
 
-While this gives the same advantages to code organization there is nothing stopping me from modifying the pizza after it's created. One of the advantages of builder is that the created object is immutable. Immutable objects are great because they can be safely used in caches or passed around between threads.
+  return NSTimeZone.knownTimeZoneNames().flatMap(NSTimeZone.init).filter { timeZone in
+      let components = calendar.componentsInTimeZone(timeZone, fromDate: NSDate())
+      components.hour = hour
+      components.minute = minute
+      let date = calendar.dateFromComponents(components)!
 
-But, we can improve this by combining the approach from my first post and this one. Let's take a look at an example using Foundation:
+      return calendar.isDate(date, equalToDate: currentUTCTime, toUnitGranularity: .Hour)
+  }
+}
+```
 
-    NSURL *url = ({
-        NSURLComponents *components = [[NSURLComponents alloc] init];
-        components.scheme = @"http";
-        components.host = @"annema.me";
-        components.path = @"the-builder-pattern-in-objective-c";
-        [components URL];
-    )};
-    // URL = http://annema.me/the-builder-pattern-in-objective-c
+Usage:
 
-In this example `NSURLComponents` is the builder object and `NSURL` is the immutable result. The url components are nicely enclosed in their own scope making it impossible to accidentally re-use the same instance. The created URL is immutable, giving us the same advantages of builder without having to add a special constructor to the class.
+```
+timeZonesWhereItIs(12, 14)
+```
 
-Even better is that this also works for any object that has a mutable counterpart (hat tip to [Hannes Verlinde](http://cocoanuts.mobi/2014/05/15/builder/)). For example `NSAttributedString`:
+To find a time zone at each hour offset use it as follows:
 
-     NSAttributedString *text = ({
-        NSMutableAttributedString *mutableText = [[NSMutableAttributedString alloc] init];
-        [mutableText appendAttributedString:[[NSAttributedString alloc] initWithString:paragraph1]];
-        [mutableText appendAttributedString:[[NSAttributedString alloc] initWithString:paragraph2]];
-        [mutableText appendAttributedString:[[NSAttributedString alloc] initWithString:paragraph3]];
-        [mutableText copy];
-    }];
+```
+func timesZonesForEveryHour() -> [NSTimeZone] {
+  return (0..<24).flatMap { timeZonesWhereItIs($0).first }
+}
+```
 
-Before writing my post I had forgotten about GCC Code Block Evaluation. After the responses made me aware of the pattern I not only found it works great with builder, it's a great aide in code organization as well. Mattt Thompson summarized it better than I can:
+Note that there are time zones that are offset by [30 and 15 minutes][]. This function won't return those.
 
-> If code craftsmanship is important to you, strongly consider making this standard practice in your work. It may look a bit weird at first, but this will very likely become common convention by the end of 2014.
+[30 and 15 minutes]: https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
 
-I guess my adopting this practice in 2014 is one more step towards proving Mattt's statement.
+Have fun.

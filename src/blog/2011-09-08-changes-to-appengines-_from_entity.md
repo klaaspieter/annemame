@@ -1,18 +1,45 @@
 ---
-title: Changes to AppEngine's _from_entity
-date: '2011-09-08T15:49:00.000+02:00'
+title: Find time zones where it's currently a certain time
+date: '2016-05-05T10:18:00.000+02:00'
 ---
 
-Both my blog and Enstore experienced a serious outage today. This was caused by a recent change to how App Engine initializes entities. The error was:
+For a project I'm working I needed a function that returns the time zones where it's currently 9am. I generalized the function to be able to find time zones where it's currently any time. My Swift implementation was inspired by this [stackoverflow answer][], providing code for the same problem in Ruby.
 
-    BadArgumentError: Cannot use key and key_name at the same time with different values
+[stackoverflow answer]: http://stackoverflow.com/a/36284082/1555903
 
-A common trick to detect wether an entity is loaded from datastore or not is to check `if kwargs.get('_from_entity') == True:` in the models `__init__` method. Before today's change \_from\_entity was a bool argument and this code worked perfectly. Today's change made \_from\_entity a dictionary containing the entities' properties and values. Because of this the explicit check for `True` returned `False` and both Enstore and this blog started returning 500 errors.
+```
+func timeZonesWhereItIs(hour: Int, _ minute: Int = 0) -> [NSTimeZone] {
+  let calendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian)!
+  calendar.timeZone = NSTimeZone(name: "UTC")!
+  let currentUTCTime = NSDate()
 
-The issues were resolved by changing :
+  return NSTimeZone.knownTimeZoneNames().flatMap(NSTimeZone.init).filter { timeZone in
+      let components = calendar.componentsInTimeZone(timeZone, fromDate: NSDate())
+      components.hour = hour
+      components.minute = minute
+      let date = calendar.dateFromComponents(components)!
 
-    `if kwargs.get('_from_entity') == True:` 
+      return calendar.isDate(date, equalToDate: currentUTCTime, toUnitGranularity: .Hour)
+  }
+}
+```
 
-to: 
+Usage:
 
-    `if kwargs.get('_from_entity'):`.
+```
+timeZonesWhereItIs(12, 14)
+```
+
+To find a time zone at each hour offset use it as follows:
+
+```
+func timesZonesForEveryHour() -> [NSTimeZone] {
+  return (0..<24).flatMap { timeZonesWhereItIs($0).first }
+}
+```
+
+Note that there are time zones that are offset by [30 and 15 minutes][]. This function won't return those.
+
+[30 and 15 minutes]: https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
+
+Have fun.
