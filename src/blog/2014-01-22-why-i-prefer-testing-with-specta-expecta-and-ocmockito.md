@@ -8,23 +8,29 @@ date: '2014-01-22T19:20:00.000+01:00'
 If you're testing your Objective-C code (you should) you've probably heard of [Kiwi][] and XCTest. Great! Do you like it? Awesome! You should switch to [Specta][] and [Expecta][]. Why? Keep reading.
 
 [Kiwi]: https://github.com/allending/Kiwi
+
 [Specta]: https://github.com/specta/specta
+
 [Expecta]: https://github.com/specta/expecta
 
 ### Uniform interface
 
 Specta provides one uniform interface that works for every kind of value. For example:
 
-    it("equals YES", ^{
-        expect(view.isHidden).to.equal(YES);
-        // Yes, I'm aware there is a isTruthy matcher but that wouldn't really prove my point...
-    });
+```
+it("equals YES", ^{
+    expect(view.isHidden).to.equal(YES);
+    // Yes, I'm aware there is a isTruthy matcher but that wouldn't really prove my point...
+});
+```
 
 Compare this to the Kiwi alternative:
 
-    it(@"equals YES", ^{
-        [theValue(view.isHidden) should] equal:theValue(YES)];
-    });
+```
+it(@"equals YES", ^{
+    [theValue(view.isHidden) should] equal:theValue(YES)];
+});
+```
 
 In Kiwi, when working with scalars, both sides need to be wrapped using the `theValue(aScalar)` macro. Specta hides this complexity by providing one uniform interface for any value. Anything you pass to `expect` or to a matcher is automatically wrapped for you.
 
@@ -40,31 +46,37 @@ Testing asynchronous code with Specta and Expecta is amazingly well done. It's p
 
 Let's take a look at Specta first:
 
-    it(@"does something asynchronously", ^AsyncBlock{
-        [object doSomethingAsynchronously:^(BOOL wasDone) {
-            expect(wasDone).to.beTruthy();
-            done();
-        }];
-    });
+```
+it(@"does something asynchronously", ^AsyncBlock{
+    [object doSomethingAsynchronously:^(BOOL wasDone) {
+        expect(wasDone).to.beTruthy();
+        done();
+    }];
+});
+```
 
-`AsyncBlock` is a macro that provides a block named done. You call this block whenever your test finishes. This can be anywhere between immediately or 10 seconds from now. After 10 seconds it is assumed done will not get called and your test fails. You can use this to test that some sort of callback will be called some time from now. 
+`AsyncBlock` is a macro that provides a block named done. You call this block whenever your test finishes. This can be anywhere between immediately or 10 seconds from now. After 10 seconds it is assumed done will not get called and your test fails. You can use this to test that some sort of callback will be called some time from now.
 
 This also works on `before` blocks. For example to ensure that a view controller is presented before any expectations run:
 
-    before(^AsyncBlock{
-        [_mainViewController presentViewController:_viewController animated:YES completion:done];
-    });
+```
+before(^AsyncBlock{
+    [_mainViewController presentViewController:_viewController animated:YES completion:done];
+});
+```
 
 Be careful with this approach. If you're doing TTD or BDD you want your test suite to be fast. A 10 second timeout can significantly slow it down. The Specta approach is often useful in lower levels of the stack. For example imagine AFNetworking using this approach to verify that a completion block is called after a request finishes.
 
 When you test higher up the stack you'll also want to test the outcome of the asynchronous callback. For example that the completion of a network request updates your UI:
 
-    it(@"sets the user's name when the user loads", ^{
-        [_view.user load];
-        expect(_view.nameLabel.text).will.equal(@"Ben Day");
-    });
+```
+it(@"sets the user's name when the user loads", ^{
+    [_view.user load];
+    expect(_view.nameLabel.text).will.equal(@"Ben Day");
+});
+```
 
-This verifies that the `nameLabel`'s text property equals Ben Day within 1 second. The default timeout of 1 second can be changed using `[Expecta setAsynchronousTestTimeout:2]`. 
+This verifies that the `nameLabel`'s text property equals Ben Day within 1 second. The default timeout of 1 second can be changed using `[Expecta setAsynchronousTestTimeout:2]`.
 
 In my experience the combination of these methods of asynchronous testing cover any use case you might have.
 
@@ -84,11 +96,13 @@ My first pick was [OCMock][]. Mostly because it's recommend by Specta's authors.
 
 After a brief search for another mocking framework I settled on [OCMockito][] and I've been using it without complaints ever since. Take a look at the following spec:
 
-    it(@"has a dependency that does something", ^{
-         _subject.dependency = mock([Dependency class]);
-         [_subject doSomethingWithDependency];
-         [verify(_subject.dependency) doSomething];
-    });
+```
+it(@"has a dependency that does something", ^{
+     _subject.dependency = mock([Dependency class]);
+     [_subject doSomethingWithDependency];
+     [verify(_subject.dependency) doSomething];
+});
+```
 
 OCMockito's clever use of macros make it a very good match with Specta. It also correctly reports errors making it trivial to track down the exact location of a failure.
 

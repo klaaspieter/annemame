@@ -7,30 +7,36 @@ For a project I'm working I needed a function that returns the time zones where 
 
 [stackoverflow answer]: http://stackoverflow.com/a/36284082/1555903
 
-    func timeZonesWhereItIs(hour: Int, _ minute: Int = 0) -> [NSTimeZone] {
-      let calendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian)!
-      calendar.timeZone = NSTimeZone(name: "UTC")!
-      let currentUTCTime = NSDate()
+```
+func timeZonesWhereItIs(hour: Int, _ minute: Int = 0) -> [NSTimeZone] {
+  let calendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian)!
+  calendar.timeZone = NSTimeZone(name: "UTC")!
+  let currentUTCTime = NSDate()
 
-      return NSTimeZone.knownTimeZoneNames().flatMap(NSTimeZone.init).filter { timeZone in
-          let components = calendar.componentsInTimeZone(timeZone, fromDate: NSDate())
-          components.hour = hour
-          components.minute = minute
-          let date = calendar.dateFromComponents(components)!
+  return NSTimeZone.knownTimeZoneNames().flatMap(NSTimeZone.init).filter { timeZone in
+      let components = calendar.componentsInTimeZone(timeZone, fromDate: NSDate())
+      components.hour = hour
+      components.minute = minute
+      let date = calendar.dateFromComponents(components)!
 
-          return calendar.isDate(date, equalToDate: currentUTCTime, toUnitGranularity: .Hour)
-      }
-    }
+      return calendar.isDate(date, equalToDate: currentUTCTime, toUnitGranularity: .Hour)
+  }
+}
+```
 
 Usage:
 
-    timeZonesWhereItIs(12, 14)
+```
+timeZonesWhereItIs(12, 14)
+```
 
 To find a time zone at each hour offset use it as follows:
 
-    func timesZonesForEveryHour() -> [NSTimeZone] {
-      return (0..<24).flatMap { timeZonesWhereItIs($0).first }
-    }
+```
+func timesZonesForEveryHour() -> [NSTimeZone] {
+  return (0..<24).flatMap { timeZonesWhereItIs($0).first }
+}
+```
 
 Note that there are time zones that are offset by [30 and 15 minutes][]. This function won't return those.
 

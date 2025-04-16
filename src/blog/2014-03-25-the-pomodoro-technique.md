@@ -25,7 +25,7 @@ My average work day now consists of three recurring tasks:
 
 I keep up to date with what's going on in the world during the 5 minute breaks. The point is to eliminate distractions so I try not to check IM, Twitter or Facebook during the 25 minutes.
 
-It's impossible to measure if using Pomodoro has made me more productive, but I _feel_ more productive. Heck, I literally shipped an [Android app][] with no prior Android development experience in 4 weeks.
+It's impossible to measure if using Pomodoro has made me more productive, but I *feel* more productive. Heck, I literally shipped an [Android app][] with no prior Android development experience in 4 weeks.
 
 [Android app]: https://play.google.com/store/apps/details?id=com.yourkarma.android
 

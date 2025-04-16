@@ -18,22 +18,26 @@ Git (since version 1.4) includes support for aliasing commands. For a quick intr
 
 These are the aliases I currently use:
 
-    [alias]
-    	co = checkout
-        mg = merge
-    	st = status
-    	ci = commit
-    	br = branch
-    	df = difftool
-        lg = log --graph --pretty=format:'%C(bold red)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold green)<%an>%Creset' --abbrev-commit --date=relative
-    	lc = log ORIG_HEAD.. --no-merges --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+```
+[alias]
+	co = checkout
+    mg = merge
+	st = status
+	ci = commit
+	br = branch
+	df = difftool
+    lg = log --graph --pretty=format:'%C(bold red)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold green)<%an>%Creset' --abbrev-commit --date=relative
+	lc = log ORIG_HEAD.. --no-merges --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+```
 
 With the exception of `lc` and `lg` all my aliases are shortcuts for git commands. The `lg` alias is a shortcut for `git log` with custom formatting. `lc` is the same, but it only shows the last fetched commits. While you’re adding aliases don’t forget to alias git itself as well. I’ve added the following to `~/.bash_login`:
 
-    alias g='git'
-    # Make the autocompleton work with the g alias
-    complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
-	|| complete -o default -o nospace -F _git g
+```
+alias g='git'
+# Make the autocompleton work with the g alias
+complete -o bashdefault -o default -o nospace -F _git g 2>/dev/null \
+|| complete -o default -o nospace -F _git g
+```
 
 ### Editor and difftool
 
@@ -42,11 +46,13 @@ I’ve changed my default git editor to Textmate. This means commands that requi
 Lastly I’ve also changed my difftool to [Kaleidoscope][]. This is easily done from Kaleidscope itself by going to the Integration in the Kaleidscope menu. If you don’t have Kaleidoscope already you can [currently][Approval party] buy it for a 50% discount in the [Mac app store][Kaleidoscope MAS].
 
 [Kaleidoscope]: http://www.kaleidoscopeapp.com
+
 [Approval party]: http://www.approvalparty.com
+
 [Kaleidoscope MAS]: http://itunes.apple.com/us/app/kaleidoscope/id412622418?mt=12&ls=1
 
 ### Summary
 
-This is just a summary of how I configured git. If this post has whet your appetite use [Google][] and mix and match several setups to find _your_ perfect git setup.
+This is just a summary of how I configured git. If this post has whet your appetite use [Google][] and mix and match several setups to find *your* perfect git setup.
 
-[Google]:http://www.google.com
+[Google]: http://www.google.com

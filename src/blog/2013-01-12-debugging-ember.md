@@ -13,10 +13,12 @@ While building the [Karma customer dashboard][] I discovered several interesting
 
 I don't need explicit observers often in production code but I do use them frequently for debugging. Adding an observer is very similar to a computed property:
 
-		:::javascript
-    propertyObserver: function() {
-      // Called when the value of property changes
-    }.observes('property');
+```
+	:::javascript
+propertyObserver: function() {
+  // Called when the value of property changes
+}.observes('property');
+```
 
 I use this when some computed property down the line has an unexpected value. Add any logging or debugging code in the observer and it will tell you whether the property is changed as expected or not.
 
@@ -26,13 +28,17 @@ Ember does some very cool stuff to give you useful string representations of you
 
 One option is to call toString on the property like so:
 
-		:::javascript
-    applicationController.toString(); // "<App.ApplicationController:ember2366>"
+```
+	:::javascript
+applicationController.toString(); // "<App.ApplicationController:ember2366>"
+```
 
 Another way that is less typing is to append "" like so:
 
-		:::javascript
-		applicationController + "" // "<App.ApplicationController:ember2366>"
+```
+	:::javascript
+	applicationController + "" // "<App.ApplicationController:ember2366>"
+```
 
 # Handlebars
 

@@ -3,7 +3,7 @@ title: Adopting a new programming language
 date: '2014-07-02T19:33:00.000+02:00'
 ---
 
-Over the course of my short career I've had the opportunity to build production-quality software in many new languages. I _like_ learning new languages. I think it makes me a better developer. My skill level is probably average in most of the languages I’ve worked with, but I've learned something useful from each and every one. 
+Over the course of my short career I've had the opportunity to build production-quality software in many new languages. I *like* learning new languages. I think it makes me a better developer. My skill level is probably average in most of the languages I’ve worked with, but I've learned something useful from each and every one.
 
 Here's my approach to adopting a new language.
 
@@ -13,7 +13,7 @@ There’s no use in trying to adopt something if the language you’re comfortab
 
 ### Stay idiomatic
 
-Most programmers I know, including myself, will come to a new language and start complaining about what it lacks. Most of us will also immediately start looking for ways to incorporate the favorite features from our language of choice. 
+Most programmers I know, including myself, will come to a new language and start complaining about what it lacks. Most of us will also immediately start looking for ways to incorporate the favorite features from our language of choice.
 
 Avoid this at all costs. People are productive in the language every day. It is very likely they have a better, more idiomatic, solution for the problem you're trying solve. Don't try to get back into your comfort zone by turning a language into something it's not. You want to learn something new, not force your old knowledge into another context.
 
@@ -24,6 +24,7 @@ Eventually you'll become comfortable in a language. You'll know which solutions 
 Side note: I'm talking about language patterns that apply to specific languages. You should always try to follow good software practices. Regardless of language you should always be on the lookout for [Law of Demeter][] and [Lyskov][] violations.
 
 [Law of Demeter]: http://en.wikipedia.org/wiki/Law_of_Demeter
+
 [Lyskov]: http://en.wikipedia.org/wiki/Liskov_substitution_principle
 
 ### Learn the frameworks
@@ -47,7 +48,7 @@ The best way to get yourself known is speaking. It might be hard to get in, beca
 
 ### Learn how to navigate the docs
 
-The documentation is your number one go-to for problems and discovery.  Learning to navigate the documentation means you can find things faster. Most community-maintained frameworks also adopt the documentation style and design of the language. For example, most Ruby documentation looks like, well, [ruby doc](http://ruby-doc.org/). By just learning to navigate the language's docs, you're simultaneously getting familiar with how most of the community documents their code. 
+The documentation is your number one go-to for problems and discovery.  Learning to navigate the documentation means you can find things faster. Most community-maintained frameworks also adopt the documentation style and design of the language. For example, most Ruby documentation looks like, well, [ruby doc](http://ruby-doc.org/). By just learning to navigate the language's docs, you're simultaneously getting familiar with how most of the community documents their code.
 
 ### Embrace the change
 
@@ -55,6 +56,6 @@ Initially you will literally feel overwhelmed. Programming is making choices and
 
 **Edit**: I made a bad joke about PHP. I probably thought it was funny at the time, but reading it now; it does not fit this post nor my blog. This is about encouraging everyone to learn new things and the comment detracts from that. PHP is used succesfuly every day and joking about it only disrespects its community. Linking to Buffer, a company advocating positivity and succesfully using PHP, in the same paragraph makes it even worse. I apologize. I left the comment in for posterity.
 
-We're all _software_ developers. You're not just a Ruby developer, I'm not just an Objective-C developer, ~~and in some circles you don't want to identify yourself as a PHP developer~~. More diversity in your knowledge and your experiences means you'll be able to build more interesting things. Or as the [Buffer Blog](http://blog.bufferapp.com/connections-in-the-brain-understanding-creativity-and-intelligenceconnections) said it:
+We're all *software* developers. You're not just a Ruby developer, I'm not just an Objective-C developer, ~~and in some circles you don't want to identify yourself as a PHP developer~~. More diversity in your knowledge and your experiences means you'll be able to build more interesting things. Or as the [Buffer Blog](http://blog.bufferapp.com/connections-in-the-brain-understanding-creativity-and-intelligenceconnections) said it:
 
 > The more of these building blocks we have, and the more diverse their shapes and colors, the more interesting our castles will become.

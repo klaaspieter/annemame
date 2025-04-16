@@ -6,6 +6,7 @@ date: '2012-03-16T12:05:00.000+01:00'
 I've been impressed with icons created in CSS3 and decided to have a go at it. As an experiment I took [Dustin Curtis'][] markdown mark and made a version using only HTML and CSS. This is the result ([separate page][]):
 
 [Dustin Curtis']: http://dcurt.is/the-markdown-mark
+
 [separate page]: http://dl.dropbox.com/u/3415875/Blog/CSS%20Markdown%20mark/markdown.html
 
 <style type="text/css" media="screen">
@@ -106,6 +107,7 @@ I've been impressed with icons created in CSS3 and decided to have a go at it. A
     }
 
 </style>
+
 <div style="position:relative; margin-bottom:30px;">
     <div class="markdown spec">
         <div class="stem"></div>

@@ -3,7 +3,7 @@ title: Improving the Cappuccino Theme System
 date: '2010-11-05T21:13:00.000+01:00'
 ---
 
-I've written about the Cappuccino theming system before[^1] and I have a confession to make, I don't like the current system.
+I've written about the Cappuccino theming system before\[^1] and I have a confession to make, I don't like the current system.
 
 Let me clarify. Being able to change every visual aspect of a view is great, but  currently it's too complex.
 
@@ -19,7 +19,7 @@ This is a huge step backwards. Designers have been able to style websites [for y
 
 [History of CSS]: http://en.wikipedia.org/wiki/Cascading_Style_Sheets#History
 
-Now is the time for the skeptics to say that this impossible or to hard to do. Well, as we say in Dutch, [watch and shiver][sample application][^2].
+Now is the time for the skeptics to say that this impossible or to hard to do. Well, as we say in Dutch, [watch and shiver][sample application]\[^2].
 
 [sample application]: http://dl.dropbox.com/u/3415875/Blog/Improving%20the%20Cappuccino%20Theme%20System/index-debug.html
 
@@ -29,6 +29,6 @@ In the application I use a Javascript CSS parser. This prevents the need for a s
 
 Now to also get them to use Git.
 
-[^1]: Previous posts are [Cappuccino Custom Themes](http://www.annema.me/blog/post/cappuccino-custom-themes) and [The Basics of Cappuccino Theming](http://www.annema.me/blog/post/the-basics-of-cappuccino-theming))
+\[^1]: Previous posts are [Cappuccino Custom Themes](http://www.annema.me/blog/post/cappuccino-custom-themes) and [The Basics of Cappuccino Theming](http://www.annema.me/blog/post/the-basics-of-cappuccino-theming))
 
-[^2]: The source is available [here](http://dl.dropbox.com/u/3415875/Blog/Improving%20the%20Cappuccino%20Theme%20System/Improving%20the%20Cappuccino%20Theme%20System.zip)
+\[^2]: The source is available [here](http://dl.dropbox.com/u/3415875/Blog/Improving%20the%20Cappuccino%20Theme%20System/Improving%20the%20Cappuccino%20Theme%20System.zip)

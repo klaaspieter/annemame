@@ -7,10 +7,10 @@ This year, European developers had a hard time attending the [WWDC](http://devel
 
 Luckily the community took care of us. The Mac Developer Network hosted a mini NSConference during WWDC. Wanting to help out, I gave a talk about the [Cappuccino][] frameworks.
 
-[Cappuccino]:http://cappuccino.org
+[Cappuccino]: http://cappuccino.org
 
-My session and all the others given during NSConference MINI are now available at the [Mac Developer Network][] website. You can get all of the sessions in one pack for 50 dollars[^1].
+My session and all the others given during NSConference MINI are now available at the [Mac Developer Network][] website. You can get all of the sessions in one pack for 50 dollars\[^1].
 
-[Mac Developer Network]:http://www.mac-developer-network.com/video/video101038.html
+[Mac Developer Network]: http://www.mac-developer-network.com/video/video101038.html
 
-[^1]: As far as I'm aware there's no way to buy individual sessions, so if you're only interested in one talk you're still going to have to pay the full sum for all the sessions. 
+\[^1]: As far as I'm aware there's no way to buy individual sessions, so if you're only interested in one talk you're still going to have to pay the full sum for all the sessions.

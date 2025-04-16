@@ -10,5 +10,7 @@ As a software user, and developer; I've come to enjoy [consuming](http://littleb
 If you have any suggestions, be sure to [let me know](http://realworlddetails.com/submit). You can also stay up to date by following our [Tumblr blog][], [Twitter][] or by simply liking our [Facebook page][].
 
 [Tumblr blog]: http://realworlddetails.com
+
 [Twitter]: https://twitter.com/realworlddetail
+
 [Facebook page]: https://facebook.com/realworlddetails

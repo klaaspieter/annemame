@@ -11,13 +11,15 @@ Each environment is different. In Development crashes are not reported and Faceb
 
 One solution, unfortunately used frequently, is preprocessor macros. When you create a project, Xcode [automatically configures](https://developer.apple.com/library/mac/technotes/tn2347/_index.html#//apple_ref/doc/uid/DTS40014516-CH1-THE_DEBUG_PREPROCESSOR_MACRO) a `DEBUG=1` preprocessor macro for Debug builds. The macro is not defined for release builds so it’s possible to target different environments:
 
-    #if DEBUG
-    NSString *const KPAThirdPartyServiceKey = @"debug123";
-    #else
-    NSString *const KPAThirdPartyServiceKey = @"release123";
-    #endif
+```
+#if DEBUG
+NSString *const KPAThirdPartyServiceKey = @"debug123";
+#else
+NSString *const KPAThirdPartyServiceKey = @"release123";
+#endif
+```
 
-This is known as [conditional compilation](http://en.wikipedia.org/wiki/C_preprocessor#Conditional_compilation). The code in the `DEBUG` block will not be part of a Release build and vice versa. Meaning both environments run different code. This is great if you’re targeting different architectures, say ARM and Intel, because doing the same thing requires different APIs. 
+This is known as [conditional compilation](http://en.wikipedia.org/wiki/C_preprocessor#Conditional_compilation). The code in the `DEBUG` block will not be part of a Release build and vice versa. Meaning both environments run different code. This is great if you’re targeting different architectures, say ARM and Intel, because doing the same thing requires different APIs.
 
 It’s awful for configuring environment, because 1) it’s an unnecessary conditional (that doesn’t indent in Xcode) 2) you’re literally shipping code that’s different from what you use to debug. In this simple example it will likely never cause problems, but it’ll become more complicated over time. Consider what happens when introducing a third environment. As mentioned before, the Karma app has 3 primary environments and several subsets of those. Using conditional compilations, we would need several levels of nested conditionals to support every environment.
 
@@ -45,17 +47,19 @@ For convenience I also created a scheme for each build configuration. This makes
 
 Now that we have a way to differentiate between environments it’s time to discover how we can load a configuration for each. This is already partially solved by the `Configuration` object. In the `loadDefaults` method it will search for the `ConfigurationPlist` key in the Info.plist. In other words: all we need is a way to make this key have a different value for each environment.
 
-When a value in the Info.plist is enclosed in $(), the key between () will be looked up in your build settings (I searched for documentation on this, but couldn’t find any). In the example project the `ConfigurationPlist` value is $(CONFIGURATION_PLIST). To make it work, we need to add a build setting called “CONFIGURATION_PLIST” and give it a different value for each build configuration.
+When a value in the Info.plist is enclosed in $(), the key between () will be looked up in your build settings (I searched for documentation on this, but couldn’t find any). In the example project the `ConfigurationPlist` value is $(CONFIGURATION\_PLIST). To make it work, we need to add a build setting called “CONFIGURATION\_PLIST” and give it a different value for each build configuration.
 
-To add a build setting, select the project in the Project Navigator, select the target (in the Example app it’s called “Configuration”) under “PROJECTS” and switch to the “Build Settings” tab. In this tab you can add more build settings by clicking the plus icon and selecting “Add User-Defined Setting” from the popup menu. Name it “CONFIGURATION_PLIST”. Now click the arrow on the left side, you’ll see that Xcode allows you to change the value for each build configuration. How you name these is up to you. I follow [Environment]-Config as a naming pattern.
+To add a build setting, select the project in the Project Navigator, select the target (in the Example app it’s called “Configuration”) under “PROJECTS” and switch to the “Build Settings” tab. In this tab you can add more build settings by clicking the plus icon and selecting “Add User-Defined Setting” from the popup menu. Name it “CONFIGURATION\_PLIST”. Now click the arrow on the left side, you’ll see that Xcode allows you to change the value for each build configuration. How you name these is up to you. I follow \[Environment]-Config as a naming pattern.
 
 ![Adding custom build settings gif](http://i.imgur.com/BFwGPbG.gif)
 
-The final step is to create the plists. If you look at the example project you’ll see there is one plist for each environment: Development-Config.plist, Staging-Config.plist and Production-Config.plist. I also added two keys: `environment` and `report_crashes`. These are just two examples, you can add any configuration options in these plists. 
+The final step is to create the plists. If you look at the example project you’ll see there is one plist for each environment: Development-Config.plist, Staging-Config.plist and Production-Config.plist. I also added two keys: `environment` and `report_crashes`. These are just two examples, you can add any configuration options in these plists.
 
 All that’s left is to access your settings at runtime:
 
-    [[Configuration defaultConfiguration] settingForKey:@“report_crashes”];
+```
+[[Configuration defaultConfiguration] settingForKey:@“report_crashes”];
+```
 
 # Wrapping up
 
