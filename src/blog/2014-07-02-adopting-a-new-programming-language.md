@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Adopting a new programming language
-date: '2014-07-02 19:33:00'
+date: '2014-07-02T19:33:00.000+02:00'
 ---
 
 Over the course of my short career I've had the opportunity to build production-quality software in many new languages. I _like_ learning new languages. I think it makes me a better developer. My skill level is probably average in most of the languages I’ve worked with, but I've learned something useful from each and every one. 

@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Hour formatting with NSDateFormatter dateFormatFromTemplate
-date: '2014-05-27 19:00:00'
+date: '2014-05-27T19:00:00.000+02:00'
 ---
 
 **TLDR;** Using NSDateFormatter's `dateFormatFromTemplate:options:locale:` for 12/24 hours? Use "j" instead of "h" or "H" for the hour format. 

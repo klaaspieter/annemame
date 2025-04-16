@@ -1,7 +1,6 @@
 ---
-layout: post
 title: 'Android adventures #3 - Testing'
-date: '2014-04-02 17:14:00'
+date: '2014-04-02T17:14:00.000+02:00'
 ---
 
 Due to an injury I had to suspend training for my first [half marathon][] for the remainder of the week. I found myself with some extra time yesterday morning. I decided to spend that time on trying to set up testing for the Karma Android app.

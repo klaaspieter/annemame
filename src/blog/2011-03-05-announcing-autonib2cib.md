@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Announcing autonib2cib
-date: '2011-03-05 20:20:00'
+date: '2011-03-05T20:20:00.000+01:00'
 ---
 
 Some time ago I posted a [gist][] for a command line utility that automatically nib2cibs changed nibs. During the weekend I've rewritten the utility, making it more reliable with newly created nibs and nibs containing resources.

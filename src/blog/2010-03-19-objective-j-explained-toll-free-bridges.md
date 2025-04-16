@@ -1,7 +1,6 @@
 ---
-layout: post
 title: 'Objective-J Explained: Toll-Free Bridges'
-date: '2010-03-19 22:34:00'
+date: '2010-03-19T22:34:00.000+01:00'
 ---
 
 <p>Last week I gave a talk on the <a href="http://www.cappuccino.org">Cappuccino</a> frameworks during a <a href="http://www.cocoaheads.nl">Cocoaheads Amsterdam</a> meeting. This post is the first in a series in which I’ll explain several of the subjects I talked about during my presentation. I didn’t have a lot of slides and they won’t make much sense without explanation but for those that are interested you can download them <a href="http://dl.dropbox.com/u/3415875/Blog/Objective-J%20Explained/Cocoaheads%20Cappuccino.key">here</a>. All of the examples used in this post can be downloaded <a href="http://dl.dropbox.com/u/3415875/Blog/Objective-J%20Explained/Objective-J-Explained.zip">here</a>.</p>

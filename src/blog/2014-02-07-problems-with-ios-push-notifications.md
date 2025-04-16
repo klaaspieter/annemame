@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Problems with iOS Push Notifications
-date: '2014-02-07 03:34:00'
+date: '2014-02-07T03:34:00.000+01:00'
 ---
 
 Push notifications are a great way to keep users engaged with your iPhone app. The amount of applications that support them led me to conclude that supporting push notification must be trivial. After implementing them myself I'm left with the realization that it is most definitely not.

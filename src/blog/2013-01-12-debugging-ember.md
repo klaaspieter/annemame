@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Debugging Ember
-date: '2013-01-12 15:30:00'
+date: '2013-01-12T15:30:00.000+01:00'
 ---
 
 While building the [Karma customer dashboard][] I discovered several interesting ways to debug Ember apps. Some of these are my own, others I've taken from Tom Dale's excellent [debugging Ember talk][].

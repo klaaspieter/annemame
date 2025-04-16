@@ -1,7 +1,6 @@
 ---
-layout: post
 title: CSS Markdown mark
-date: '2012-03-16 12:05:00'
+date: '2012-03-16T12:05:00.000+01:00'
 ---
 
 I've been impressed with icons created in CSS3 and decided to have a go at it. As an experiment I took [Dustin Curtis'][] markdown mark and made a version using only HTML and CSS. This is the result ([separate page][]):

@@ -1,7 +1,6 @@
 ---
-layout: post
 title: The Pomodoro Technique
-date: '2014-03-25 18:04:00'
+date: '2014-03-25T18:04:00.000+01:00'
 ---
 
 A while ago I started working with [The Pomodoro Technique][]. I initially had my reservations but after using it semi-consistently for a couple of months I don't see myself going back.

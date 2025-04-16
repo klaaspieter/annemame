@@ -1,7 +1,6 @@
 ---
-layout: post
 title: TDD - Classicists vs Mockists
-date: '2014-04-09 17:26:00'
+date: '2014-04-09T17:26:00.000+02:00'
 ---
 
 A while ago I reread Martin Fowler's classic [mocks aren't stubs essay][]. He does a great job of explaining the different schools of TDD. In summary it basically comes down to classicists, those that build the system from business models up and mockists who build the system from the UI down mocking lower level components that haven't been build yet.

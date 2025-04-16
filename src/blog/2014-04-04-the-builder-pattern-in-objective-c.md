@@ -1,7 +1,6 @@
 ---
-layout: post
 title: The Builder pattern in Objective-C
-date: '2014-04-04 17:43:00'
+date: '2014-04-04T17:43:00.000+02:00'
 ---
 
 Learning Android and by extension Java has given me some new patterns to apply in my Objective-C code. The one that I'm most excited about is the [builder pattern][].

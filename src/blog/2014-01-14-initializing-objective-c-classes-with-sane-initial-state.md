@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Initializing Objective-C classes with sane initial state
-date: '2014-01-14 18:54:00'
+date: '2014-01-14T18:54:00.000+01:00'
 ---
 
 Because Objective-C has the concept of [designated initializers][], you have to ensure your classes are instantiated using sane initial state. Take for example a fictitious person class with the designated initializer `initWithName:` 

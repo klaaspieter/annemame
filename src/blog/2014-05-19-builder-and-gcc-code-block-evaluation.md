@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Builder and GCC Code Block Evaluation
-date: '2014-05-19 18:04:00'
+date: '2014-05-19T18:04:00.000+02:00'
 ---
 
 My post about the [builder pattern][] got great responses and a lot of people offered alternative solutions to the same problem. The most popular suggestion was to use [GCC Code Block Evaluation](http://nshipster.com/new-years-2014/#gcc-code-block-evaluation-c-extension) without the separate builder object. Using the pizza example from the previous post it looks like this:

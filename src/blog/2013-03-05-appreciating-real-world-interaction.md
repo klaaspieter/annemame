@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Appreciating real world interaction
-date: '2013-03-05 08:18:00'
+date: '2013-03-05T08:18:00.000+01:00'
 ---
 
 Moving to New York and having to quickly adept to a completely different culture has really opened up my eyes to a lot of beautiful interactions we encounter during our everyday lives. This inspired me to start [realworlddetails.com](http://realworlddetails.com) to celebrate some of the great interactions we tend to overlook because of our busy lives.

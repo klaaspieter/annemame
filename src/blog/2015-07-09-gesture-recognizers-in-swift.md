@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Gesture Recognizers in Swift
-date: '2015-07-09 00:52:00'
+date: '2015-07-09T00:52:00.000+02:00'
 ---
 
 I wrote about using [Gesture Recognizers in Swift](https://thatthinginswift.com/gesture-recognizers-swift/) for [thatthinginswift.com](https://thatthinginswift.com).

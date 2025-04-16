@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Improving the Cappuccino Theme System
-date: '2010-11-05 21:13:00'
+date: '2010-11-05T21:13:00.000+01:00'
 ---
 
 I've written about the Cappuccino theming system before[^1] and I have a confession to make, I don't like the current system.

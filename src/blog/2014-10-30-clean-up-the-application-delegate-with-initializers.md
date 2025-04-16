@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Clean up the application delegate with initializers
-date: '2014-10-30 17:48:00'
+date: '2014-10-30T17:48:00.000+01:00'
 ---
 
 The application delegate has a tendency to become unwieldy. It provides a ton of callbacks to respond to about every possible state change of your app. The method that grows quickest is usually `applicationDidFinishLaunching:withOptions:`<sup>[citation needed]</sup>. From preloading content for a better experience, to configuration third party services, it all tends to end up in that same method.

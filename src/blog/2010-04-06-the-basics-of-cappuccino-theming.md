@@ -1,7 +1,6 @@
 ---
-layout: post
 title: The Basics of Cappuccino Theming
-date: '2010-04-06 08:02:00'
+date: '2010-04-06T08:02:00.000+02:00'
 ---
 
 <p>This is the second post of a series of posts about Cappuccino where I explain the subjects I talked about during my <a href="http://www.cocoaheads.nl">CocoaHeads Amsterdam</a> presentation. The first post can be found <a href="http://www.annema.me/blog/post/objective-j-explained-brtoll-free-bridges">here</a>.</p>

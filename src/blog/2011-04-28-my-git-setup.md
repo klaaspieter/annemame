@@ -1,7 +1,6 @@
 ---
-layout: post
 title: My git setup
-date: '2011-04-28 17:30:00'
+date: '2011-04-28T17:30:00.000+02:00'
 ---
 
 I have been using git since I started working on Cappuccino. Over time I’ve found several useful additions to my configuration that made working with it easier.

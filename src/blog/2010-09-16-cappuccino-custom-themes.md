@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Cappuccino Custom Themes
-date: '2010-09-16 19:17:00'
+date: '2010-09-16T19:17:00.000+02:00'
 ---
 
 A while ago I wrote a blog post about [the basics of Cappuccino theming](http://www.annema.me/blog/post/the-basics-of-cappuccino-theming). Since then I've got a lot of questions about how to create fully customized themes. 

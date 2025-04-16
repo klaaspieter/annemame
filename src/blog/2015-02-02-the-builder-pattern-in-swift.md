@@ -1,7 +1,6 @@
 ---
-layout: post
 title: The Builder Pattern in Swift
-date: '2015-02-02 20:51:00'
+date: '2015-02-02T20:51:00.000+01:00'
 ---
 
 A while ago I wrote a post about implementing the builder pattern in Objective-C. Today we’re going to do the same for Swift.

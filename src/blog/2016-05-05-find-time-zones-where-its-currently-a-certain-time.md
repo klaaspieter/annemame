@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Find time zones where it's currently a certain time
-date: '2016-05-05 10:18:00'
+date: '2016-05-05T10:18:00.000+02:00'
 ---
 
 For a project I'm working I needed a function that returns the time zones where it's currently 9am. I generalized the function to be able to find time zones where it's currently any time. My Swift implementation was inspired by this [stackoverflow answer][], providing code for the same problem in Ruby.

@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Changes to AppEngine's _from_entity
-date: '2011-09-08 15:49:00'
+date: '2011-09-08T15:49:00.000+02:00'
 ---
 
 Both my blog and Enstore experienced a serious outage today. This was caused by a recent change to how App Engine initializes entities. The error was:

@@ -1,7 +1,6 @@
 ---
-layout: post
 title: 'Android adventures #1 — Perform task on launch'
-date: '2014-03-27 17:54:00'
+date: '2014-03-27T17:54:00.000+01:00'
 ---
 
 I'm going to try and apply the [Brent Simmons][] approach to Android development. This is the first installment. 

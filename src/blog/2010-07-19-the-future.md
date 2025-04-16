@@ -1,7 +1,6 @@
 ---
-layout: post
 title: The future
-date: '2010-07-19 15:33:00'
+date: '2010-07-19T15:33:00.000+02:00'
 ---
 
 Most of you probably already know, but for those who don’t; the company I work at, [Sofa][] was acquired by [Facebook][Acquisition blogpost]. For reasons I can’t disclose I was not part of the acquisition.

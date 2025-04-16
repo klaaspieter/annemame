@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Ruby's tap method in Swift
-date: '2015-03-18 13:38:00'
+date: '2015-03-18T13:38:00.000+01:00'
 ---
 
 Ruby has a nice method called `tap`, which I wanted to try and port to Swift. To learn what it does, let’s take a look at [Ruby’s documentation](http://ruby-doc.org/core-2.2.0/Object.html#method-i-tap):

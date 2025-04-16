@@ -1,7 +1,6 @@
 ---
-layout: post
 title: NSConference MINI 2010 Sessions Online
-date: '2010-07-22 17:46:00'
+date: '2010-07-22T17:46:00.000+02:00'
 ---
 
 This year, European developers had a hard time attending the [WWDC](http://developer.apple.com/wwdc), Apple's developers conference. The announcement was to late, forcing developers to arrange an entire inter continental trip in a relative short amount of time. There was also the pretty steep price and of course it was sold out within just 8 days!

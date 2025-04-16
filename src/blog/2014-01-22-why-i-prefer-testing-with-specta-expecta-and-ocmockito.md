@@ -1,7 +1,6 @@
 ---
-layout: post
-title: Why I prefer testing with Specta, Expecta and OCMockito
-date: '2014-01-22 19:20:00'
+title: 'Why I prefer testing with Specta, Expecta and OCMockito'
+date: '2014-01-22T19:20:00.000+01:00'
 ---
 
 **Update August 2014**: Since writing this article, OCMock has released major version 3. Everything said about OCMock is based on version 2.

@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Programmatically Scroll a UIWebView
-date: '2010-05-15 06:33:00'
+date: '2010-05-15T06:33:00.000+02:00'
 ---
 
 Ever wanted to scroll a UIWebView programmatically on the iPad or iPhone? Unfortunately Apple doesn't have a public API to do this, but there is a way. A UIWebView can execute any arbitrary javascript with `stringByEvaluatingJavaScriptFromString:`.

@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Configure your iOS app for multiple environments
-date: '2014-11-20 19:50:00'
+date: '2014-11-20T19:50:00.000+01:00'
 ---
 
 Two weeks ago I wrote a post about [cleaning up your application delegate with initializers](http://www.annema.me/clean-up-the-application-delegate-with-initializers). I eluded to a `Configuration` object in that post. I decided to make this two separate posts because they’re different concepts that happen to work together.

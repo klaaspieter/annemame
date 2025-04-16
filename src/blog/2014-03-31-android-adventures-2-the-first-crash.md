@@ -1,7 +1,6 @@
 ---
-layout: post
 title: 'Android adventures #2 - The first crash'
-date: '2014-03-31 17:12:00'
+date: '2014-03-31T17:12:00.000+02:00'
 ---
 
 Last week we introduced bug fix monday's at Karma. The goal is to have a dedicated day to fix bugs that we usually don't have time for. Because, you know, features are better.
