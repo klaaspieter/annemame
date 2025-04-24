@@ -75,12 +75,9 @@ p {
   font-size: var(--step-1);
 }
 
-a:not([class]) {
+.home a {
   color: var(--color-text);
   text-decoration-color: var(--color-accent);
-}
-
-a:not([class]) {
   text-decoration: none;
   color: var(--color-text);
   position: relative;
@@ -88,7 +85,7 @@ a:not([class]) {
   z-index: 1;
 }
 
-a:not([class]):after {
+.home a:after {
   content: '';
   display: block;
   height: 2px;
@@ -102,14 +99,14 @@ a:not([class]):after {
   background: var(--color-accent);
 }
 
-a:not([class]):hover {
+.home a:hover {
   color: white;
 }
 
-a:not([class]):hover:after {
-  right: 0;
-  left: 0;
-  height: 100%;
+.home a:hover:after {
+    right: 0;
+    left: 0;
+    height: 100%;
 }
 
 .my-apps > *,
