@@ -3,14 +3,16 @@ layout: "layouts/base.html"
 title: "annema.me - Blog"
 ---
 
-<h1>Blog</h1>
-<ol role="list" class="stack">
-  {% for post in collections.posts %}
-  <li>
-    <a href="{{ post.url }}">{{ post.data.title }}</a>
-    <time datetime="{{ post.date | htmlDateString }}"
-      >{{ post.date | readableDate }}</time
-    >
-  </li>
-  {% endfor %}
-</ol>
+<article class="blog">
+  <h1>Blog</h1>
+  <ol role="list" class="stack">
+    {% for post in collections.posts %}
+    <li class="cluster">
+      <time datetime="{{ post.date | htmlDateString }}"
+            >{{ post.date | readableDate }}</time
+          >
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </li>
+    {% endfor %}
+  </ol>
+</article>

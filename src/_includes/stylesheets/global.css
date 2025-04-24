@@ -12,7 +12,14 @@
 :root {
   --color-accent: #f97316;
   --color-background: #ffffff;
-  --color-text: #2d2d2d;
+
+  /* sufficient contrast */
+  --color-text: oklch(0.28 0 0);
+  --color-text-weak: oklch(0.39 0 0);
+  --color-text-weaker: oklch(0.53 0 0);
+
+  /* disabled; which doesn't need sufficient contrast */
+  --color-text-weakest: oklch(0.65 0 0);
 
   --color-text-link: var(--color-accent);
 
@@ -145,18 +152,10 @@ ol[role="list"] {
   padding: 0;
 }
 
-.made {
-  --cluster-direction: column;
-  --cluster-vertical-alignment: flex-start;
-  --gutter: var(--space-3xs);
-  border-radius: var(--border-radius);
-  object-fit: contain;
-  height: auto;
-  box-shadow: var(--box-shadow-card);
-  padding: var(--space-s);
-}
-
-.made img {
-  height: auto;
-  border-radius: var(--border-radius);
+.blog li time {
+  position: absolute;
+  translate: -100%;
+  padding-inline-end: 1ch;
+  font-size: var(--step--1);
+  color: var(--color-text-weaker);
 }
