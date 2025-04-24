@@ -1,0 +1,138 @@
+/*!
+ * https://github.com/enkia/tokyo-night-vscode-theme
+ * https://github.com/folke/tokyonight.nvim
+ */
+
+code[class*='language-'],
+pre[class*='language-'] {
+	color: #a9b1d6;
+}
+
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
+	text-shadow: none;
+	background: #6f7bb640;
+}
+
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+	text-shadow: none;
+	background: #6f7bb640;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+	color: white;
+	background: #1a1b26;
+}
+
+:not(pre) > code[class*='language-'] {
+	padding: 0.1em;
+	border-radius: 0.3em;
+	white-space: normal;
+}
+
+.token.comment {
+	color: #565f89;
+	font-style: italic;
+}
+
+.token.keyword {
+	color: #9d7cd8;
+}
+
+.token.operator {
+	color: #89ddff;
+}
+
+.token.punctuation {
+	color: #bb9af7;
+}
+
+.token.builtin {
+	color: #f7768e;
+}
+
+.token.number {
+	color: #ff9e64;
+}
+
+.token.constant {
+	color: #ff9e64;
+}
+
+.token.string {
+	color: #9ece6a;
+}
+
+.token.symbol {
+	color: #2ac3de;
+}
+
+.token.attr-name {
+	color: rgb(241, 250, 140);
+}
+
+.token.selector {
+	color: #9ece6a;
+}
+
+.token.hexcode {
+	color: #9aa5ce;
+}
+
+.token.function {
+	color: #7aa2f7;
+}
+
+.token.tag {
+	color: #9ece6a;
+}
+
+.token.variable {
+	color: #c0caf5;
+}
+
+.token.char {
+	color: #bb9af7;
+}
+
+.token.property {
+	color: #2ac3de;
+}
+
+.token.inserted {
+	color: #449dab;
+}
+
+.token.deleted {
+	color: #914c54;
+}
+
+.token.changed {
+	color: #6183bb;
+}
+
+.token.regex {
+	color: #b4f9f8;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+:root {
+	--am-prism-line-numbers-color: #565f8977;
+	--am-prism-border-color: #565f8922;
+	--am-prism-copy-color: #a9b1d6;
+	--am-prism-copy-bg: #565f8933;
+}
