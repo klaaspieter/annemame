@@ -13,13 +13,23 @@
   --color-accent: #f97316;
   --color-background: #ffffff;
 
+  --color-gray-100: oklch(0.99 0 0);
+  --color-gray-200: oklch(0.91 0 0);
+  --color-gray-300: oklch(0.83 0 0);
+  --color-gray-400: oklch(0.75 0 0);
+  --color-gray-500: oklch(0.67 0 0);
+  --color-gray-600: oklch(0.59 0 0);
+  --color-gray-700: oklch(0.51 0 0);
+  --color-gray-800: oklch(0.43 0 0);
+  --color-gray-900: oklch(0.35 0 0);
+
   /* sufficient contrast */
-  --color-text: oklch(0.28 0 0);
-  --color-text-weak: oklch(0.39 0 0);
-  --color-text-weaker: oklch(0.53 0 0);
+  --color-text: var(--color-gray-900);
+  --color-text-weak: var(--color-gray-800);
+  --color-text-weaker: var(--color-gray-700);
 
   /* disabled; which doesn't need sufficient contrast */
-  --color-text-weakest: oklch(0.65 0 0);
+  --color-text-weakest: var(--color-gray-500);
 
   --color-text-link: var(--color-accent);
 
@@ -38,8 +48,12 @@
 @media(prefers-color-scheme: dark) {
   :root {
     --color-accent: #f97316;
-    --color-background: #2d2d2d;
-    --color-text: #ffffff;
+    --color-background: var(--color-gray-900);
+
+    --color-text: var(--color-gray-100);
+    --color-text-weak: var(--color-gray-200);
+    --color-text-weaker: var(--color-gray-300);
+    --color-text-weakest: var(--color-gray-500);
 
     --color-text-link: var(--color-accent);
 
