@@ -59,6 +59,7 @@ h4 {
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
+  color: currentColor;
   text-decoration-skip-ink: auto;
 }
 
