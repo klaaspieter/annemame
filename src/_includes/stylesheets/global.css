@@ -21,7 +21,7 @@
   --color-gray-600: oklch(0.59 0 0);
   --color-gray-700: oklch(0.51 0 0);
   --color-gray-800: oklch(0.43 0 0);
-  --color-gray-900: oklch(0.35 0 0);
+  --color-gray-900: oklch(0.28 0 0);
 
   /* sufficient contrast */
   --color-text: var(--color-gray-900);
