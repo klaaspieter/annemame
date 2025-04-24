@@ -75,6 +75,15 @@ p {
   font-size: var(--step-1);
 }
 
+a:not([class]) {
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: .2ex;
+}
+
+a:not([class]):hover {
+  text-underline-offset: .1ex;
+}
+
 .home a {
   color: var(--color-text);
   text-decoration-color: var(--color-accent);
