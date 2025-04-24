@@ -1,8 +1,10 @@
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import filters from "./_config/filters.js";
 
 export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+  eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(filters);
 
   eleventyConfig.addBundle("css", {
