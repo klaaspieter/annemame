@@ -10,8 +10,17 @@
 {% include "stylesheets/utilities/uppercased.css" %}
 
 :root {
-  --color-accent: #f97316;
-  --color-background: #ffffff;
+  --color-almond: oklch(0.9 0.0352 96.33);
+  --color-dusk: oklch(0.67 0.0514 263.01);
+  --color-ice: oklch(0.9 0.051 252.93);
+  --color-blueberry: oklch(0.5 0.0973 285.24);
+  --color-lavendar: oklch(0.49 0.1178 309.31);
+  --color-pink: oklch(0.75 0.1372 320.67);
+  --color-hopbush oklch(0.63 0.136 353.97);
+  --color-blush: oklch(0.77 0.1097 14.25);
+  --color-sundown: oklch(0.85 0.0852 17.2);
+  --color-peach: oklch(0.87 0.0816 73.04);
+  --color-merino: oklch(0.95 0.0233 27.34);
 
   --color-gray-100: oklch(0.99 0 0);
   --color-gray-200: oklch(0.91 0 0);
@@ -23,6 +32,20 @@
   --color-gray-800: oklch(0.43 0 0);
   --color-gray-900: oklch(0.28 0 0);
 
+  --color-primary: var(--color-lavendar);
+
+  --color-primary-950: oklch(from var(--color-primary) 0.99 c h);
+  --color-primary-900: oklch(from var(--color-primary) 0.97 c h);
+  --color-primary-800: oklch(from var(--color-primary) 0.83 c h);
+  --color-primary-700: oklch(from var(--color-primary) 0.75 c h);
+  --color-primary-600: oklch(from var(--color-primary) 0.67 c h);
+  --color-primary-500: oklch(from var(--color-primary) 0.59 c h);
+  --color-primary-400: oklch(from var(--color-primary) 0.51 c h);
+  --color-primary-300: oklch(from var(--color-primary) 0.43 c h);
+  --color-primary-200: oklch(from var(--color-primary) 0.28 c h);
+  --color-primary-100: oklch(from var(--color-primary) 0.19 c h);
+  --color-primary-50: oklch(from var(--color-primary) 0.05 c h);
+
   /* sufficient contrast */
   --color-text: var(--color-gray-900);
   --color-text-weak: var(--color-gray-800);
@@ -31,7 +54,7 @@
   /* disabled; which doesn't need sufficient contrast */
   --color-text-weakest: var(--color-gray-500);
 
-  --color-text-link: var(--color-accent);
+  --color-text-link: var(--color-primary);
 
   --space: var(--space-m);
 
@@ -43,28 +66,31 @@
   --color-brb-accent: #30b0c7;
   --color-mastodon-accent: #6364ff;
   --color-github-accent: #1a1f25;
+
+  --color-background: var(--color-primary-950);
+  --color-background-pattern: var(--color-primary-900);
 }
 
 @media(prefers-color-scheme: dark) {
   :root {
-    --color-accent: #f97316;
-    --color-background: var(--color-gray-900);
-
     --color-text: var(--color-gray-100);
     --color-text-weak: var(--color-gray-200);
     --color-text-weaker: var(--color-gray-300);
     --color-text-weakest: var(--color-gray-500);
 
-    --color-text-link: var(--color-accent);
+    --color-text-link: var(--color-primary);
 
     --space: var(--space-m);
 
     --color-github-accent: #1a1f25;
+
+    --color-background: var(--color-primary-50);
+    --color-background-pattern: var(--color-primary-100);
   }
 }
 
 body {
-  background: var(--color-background);
+  margin: 0;
   color: var(--color-text);
 
   font-size: var(--step-0);
@@ -72,16 +98,49 @@ body {
 
   text-align: left;
 
+  --pattern-size: 32px;
+  --background-size: var(--pattern-size) var(--pattern-size);
+  --background-size-half: calc(var(--pattern-size) / 2) calc(var(--pattern-size) / 2);
+
+  background:
+    repeating-linear-gradient( 45deg, transparent calc(-650%/13) calc(50%/13),var(--color-background) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-background) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-background) 0 calc(300%/13)),
+
+    repeating-linear-gradient( 45deg, transparent calc(-650%/13) calc(50%/13),var(--color-background) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-background) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-background) 0 calc(300%/13)) var(--background-size-half),
+
+    repeating-linear-gradient(-45deg, transparent  calc(-650%/13) calc(50%/13),var(--color-background) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-background) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-background) 0 calc(300%/13)),
+
+    repeating-linear-gradient(-45deg, transparent calc(-650%/13) calc(50%/13),var(--color-background) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-background) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-background) 0 calc(300%/13)) var(--background-size-half) var(--color-background-pattern);
+  background-size: var(--background-size);
+}
+
+:where(body, h1, h2, h3, h4, p, figure, blockquote, dl, dd) {
+    margin-block:0
+}
+
+.brand-header {
+  --gutter: var(--space-xs);
+  font-size: var(--step-2);
+
+  padding-block: var(--space-l);
+  margin-block-end: var(--space-l);
+
+  background-color: oklch(from var(--color-primary) l c h / 0.1);
+}
+
+.main-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 
-  margin-block-end: var(--space-m);
-}
-
-:where(body, h1, h2, h3, h4, p, figure, blockquote, dl, dd) {
-    margin-block:0
 }
 
 h1 {
@@ -97,7 +156,7 @@ p {
 }
 
 a:not([class]) {
-  text-decoration-color: var(--color-accent);
+  text-decoration-color: var(--color-primary);
   text-underline-offset: .2ex;
 }
 
@@ -105,9 +164,16 @@ a:not([class]):hover {
   text-underline-offset: .1ex;
 }
 
+pre[data-language]:not([data-language=""]) {
+  &::before {
+    content: attr(data-language) ":";
+    display: block;
+  }
+}
+
 .home a {
   color: var(--color-text);
-  text-decoration-color: var(--color-accent);
+  text-decoration-color: var(--color-primary);
   text-decoration: none;
   color: var(--color-text);
   position: relative;
@@ -126,7 +192,7 @@ a:not([class]):hover {
   transition: all .15s cubic-bezier(.2, 0, 0, 1);
   transform-origin: bottom center;
   z-index: -1;
-  background: var(--color-accent);
+  background: var(--color-primary);
 }
 
 .home a:hover {
@@ -146,19 +212,19 @@ a:not([class]):hover {
 }
 
 .health-shortcuts {
-  --color-accent: var(--color-health-shortcuts-accent);
+  --color-primary: var(--color-health-shortcuts-accent);
 }
 
 .brb {
-  --color-accent: var(--color-brb-accent);
+  --color-primary: var(--color-brb-accent);
 }
 
 .github {
-  --color-accent: var(--color-github-accent);
+  --color-primary: var(--color-github-accent);
 }
 
 .mastodon {
-  --color-accent: var(--color-mastodon-accent);
+  --color-primary: var(--color-mastodon-accent);
 }
 
 ul[role="list"],

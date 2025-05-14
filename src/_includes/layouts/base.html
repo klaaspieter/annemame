@@ -21,15 +21,23 @@
     <title>annema.me</title>
   </head>
   <body>
-    <div class="wrapper">
-      {{ content | safe }}
+    <header class="brand-header">
+      <div class="wrapper">
+        <a href="/">annema.me</a>
+      </div>
+    </header>
 
-      {% if isCSSNakedDay %}
-      <p>
-      In celebration of <a href="https://css-naked-day.org/">CSS naked day</a> all of this page's styles are disabled. Because semantic markup works without CSS.
-      </p>
+    <main class="main-content">
+      <div class="wrapper">
+        {{ content | safe }}
 
-      {% endif %}
-    </div>
+        {% if isCSSNakedDay %}
+        <p>
+        In celebration of <a href="https://css-naked-day.org/">CSS naked day</a> all of this page's styles are disabled. Because semantic markup works without CSS.
+        </p>
+
+        {% endif %}
+      </div>
+    </main>
   </body>
 </html>
