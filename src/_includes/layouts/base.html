@@ -1,6 +1,7 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en-US" data-theme="merino">
   <head>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +15,7 @@
     {% include "partials/favicon.html" %}
 
     {% css %} {% include "stylesheets/global.css" %}{% endcss %}
+    {% js %} {% include "javascript/site.js" %}{% endjs %}
 
     <link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
     <script src="{% getBundleFileUrl "js" %}"></script>
@@ -23,7 +25,54 @@
   <body>
     <header class="brand-header">
       <div class="wrapper">
+        <div class="cluster">
         <a href="/">annema.me</a>
+
+        <div class="theme-picker">
+          <button id="theme-almond">
+            <span class="visually-hidden">Almond</span>
+          </button>
+
+          <button id="theme-dusk">
+            <span class="visually-hidden">Dusk</span>
+          </button>
+
+          <button id="theme-ice">
+            <span class="visually-hidden">Ice</span>
+          </button>
+
+          <button id="theme-blueberry">
+            <span class="visually-hidden">Blueberry</span>
+          </button>
+
+          <button id="theme-lavendar">
+            <span class="visually-hidden">Lavendar</span>
+          </button>
+
+          <button id="theme-pink">
+            <span class="visually-hidden">Pink</span>
+          </button>
+
+          <button id="theme-hopbush">
+            <span class="visually-hidden">Hopbush</span>
+          </button>
+
+          <button id="theme-blush">
+            <span class="visually-hidden">Blush</span>
+          </button>
+
+          <button id="theme-sundown">
+            <span class="visually-hidden">Sundown</span>
+          </button>
+
+          <button id="theme-peach">
+            <span class="visually-hidden">Peach</span>
+          </button>
+
+          <button id="theme-merino">
+            <span class="visually-hidden">Merino</span>
+          </button>
+        </div>
       </div>
     </header>
 

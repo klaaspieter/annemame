@@ -1,50 +1,19 @@
 {% include "stylesheets/_reset.css" %}
 
+{% include "stylesheets/global/color.css" %}
 {% include "stylesheets/global/space.css" %}
+{% include "stylesheets/global/font-size.css" %}
 {% include "stylesheets/global/font-size.css" %}
 
 {% include "stylesheets/compositions/stack.css" %}
 {% include "stylesheets/compositions/cluster.css" %}
 
 {% include "stylesheets/utilities/wrapper.css" %}
+{% include "stylesheets/utilities/visually-hidden.css" %}
 {% include "stylesheets/utilities/uppercased.css" %}
 
 :root {
-  --color-almond: oklch(0.9 0.0352 96.33);
-  --color-dusk: oklch(0.67 0.0514 263.01);
-  --color-ice: oklch(0.9 0.051 252.93);
-  --color-blueberry: oklch(0.5 0.0973 285.24);
-  --color-lavendar: oklch(0.49 0.1178 309.31);
-  --color-pink: oklch(0.75 0.1372 320.67);
-  --color-hopbush oklch(0.63 0.136 353.97);
-  --color-blush: oklch(0.77 0.1097 14.25);
-  --color-sundown: oklch(0.85 0.0852 17.2);
-  --color-peach: oklch(0.87 0.0816 73.04);
-  --color-merino: oklch(0.95 0.0233 27.34);
-
-  --color-gray-100: oklch(0.99 0 0);
-  --color-gray-200: oklch(0.91 0 0);
-  --color-gray-300: oklch(0.83 0 0);
-  --color-gray-400: oklch(0.75 0 0);
-  --color-gray-500: oklch(0.67 0 0);
-  --color-gray-600: oklch(0.59 0 0);
-  --color-gray-700: oklch(0.51 0 0);
-  --color-gray-800: oklch(0.43 0 0);
-  --color-gray-900: oklch(0.28 0 0);
-
-  --color-primary: var(--color-lavendar);
-
-  --color-primary-950: oklch(from var(--color-primary) 0.99 c h);
-  --color-primary-900: oklch(from var(--color-primary) 0.97 c h);
-  --color-primary-800: oklch(from var(--color-primary) 0.83 c h);
-  --color-primary-700: oklch(from var(--color-primary) 0.75 c h);
-  --color-primary-600: oklch(from var(--color-primary) 0.67 c h);
-  --color-primary-500: oklch(from var(--color-primary) 0.59 c h);
-  --color-primary-400: oklch(from var(--color-primary) 0.51 c h);
-  --color-primary-300: oklch(from var(--color-primary) 0.43 c h);
-  --color-primary-200: oklch(from var(--color-primary) 0.28 c h);
-  --color-primary-100: oklch(from var(--color-primary) 0.19 c h);
-  --color-primary-50: oklch(from var(--color-primary) 0.05 c h);
+  --color-primary: var(--color-blueberry);
 
   /* sufficient contrast */
   --color-text: var(--color-gray-900);
@@ -54,11 +23,9 @@
   /* disabled; which doesn't need sufficient contrast */
   --color-text-weakest: var(--color-gray-500);
 
-  --color-text-link: var(--color-primary);
-
   --space: var(--space-m);
 
-  --color-border: #d8dee4;
+  --color-border: var(--color-gray-300);
   --border-radius: 5px;
   --box-shadow-card: 0 0 0 1px var(--color-border), 0 1px 5px rgba(12, 12, 12, 0.05), 0 0 40px rgba(12, 12, 12, 0.015);
 
@@ -68,7 +35,7 @@
   --color-github-accent: #1a1f25;
 
   --color-background: var(--color-primary-950);
-  --color-background-pattern: var(--color-primary-900);
+  --color-background-pattern: oklch(from var(--color-primary-800) l c h / 0.2);
 }
 
 @media(prefers-color-scheme: dark) {
@@ -77,8 +44,6 @@
     --color-text-weak: var(--color-gray-200);
     --color-text-weaker: var(--color-gray-300);
     --color-text-weakest: var(--color-gray-500);
-
-    --color-text-link: var(--color-primary);
 
     --space: var(--space-m);
 
@@ -103,21 +68,21 @@ body {
   --background-size-half: calc(var(--pattern-size) / 2) calc(var(--pattern-size) / 2);
 
   background:
-    repeating-linear-gradient( 45deg, transparent calc(-650%/13) calc(50%/13),var(--color-background) 0 calc(100%/13),
-    transparent 0 calc(150%/13),var(--color-background) 0 calc(200%/13),
-    transparent 0 calc(250%/13),var(--color-background) 0 calc(300%/13)),
+    repeating-linear-gradient( 45deg, transparent calc(-650%/13) calc(50%/13),var(--color-background-pattern) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-background-pattern) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-background-pattern) 0 calc(300%/13)),
 
-    repeating-linear-gradient( 45deg, transparent calc(-650%/13) calc(50%/13),var(--color-background) 0 calc(100%/13),
-    transparent 0 calc(150%/13),var(--color-background) 0 calc(200%/13),
-    transparent 0 calc(250%/13),var(--color-background) 0 calc(300%/13)) var(--background-size-half),
+    repeating-linear-gradient( 45deg, transparent calc(-650%/13) calc(50%/13),var(--color-background-pattern) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-background-pattern) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-background-pattern) 0 calc(300%/13)) var(--background-size-half),
 
-    repeating-linear-gradient(-45deg, transparent  calc(-650%/13) calc(50%/13),var(--color-background) 0 calc(100%/13),
-    transparent 0 calc(150%/13),var(--color-background) 0 calc(200%/13),
-    transparent 0 calc(250%/13),var(--color-background) 0 calc(300%/13)),
+    repeating-linear-gradient(-45deg, transparent  calc(-650%/13) calc(50%/13),var(--color-background-pattern) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-background-pattern) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-background-pattern) 0 calc(300%/13)),
 
-    repeating-linear-gradient(-45deg, transparent calc(-650%/13) calc(50%/13),var(--color-background) 0 calc(100%/13),
-    transparent 0 calc(150%/13),var(--color-background) 0 calc(200%/13),
-    transparent 0 calc(250%/13),var(--color-background) 0 calc(300%/13)) var(--background-size-half) var(--color-background-pattern);
+    repeating-linear-gradient(-45deg, transparent calc(-650%/13) calc(50%/13),var(--color-background-pattern) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-background-pattern) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-background-pattern) 0 calc(300%/13)) var(--background-size-half) var(--color-background);
   background-size: var(--background-size);
 }
 
@@ -132,7 +97,7 @@ body {
   padding-block: var(--space-l);
   margin-block-end: var(--space-l);
 
-  background-color: oklch(from var(--color-primary) l c h / 0.1);
+  background-color: oklch(from var(--color-primary-800) l c h / 0.3);
 }
 
 .main-content {
@@ -140,7 +105,36 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+}
 
+.theme-picker button {
+  cursor: pointer;
+  outline: inherit;
+  background: none;
+  border: none;
+
+  width: var(--pattern-size);
+  height: var(--pattern-size);
+
+  border-radius: 30%;
+
+  background:
+    repeating-linear-gradient( 45deg, transparent calc(-650%/13) calc(50%/13),var(--color-primary) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-primary) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-primary) 0 calc(300%/13)),
+
+    repeating-linear-gradient( 45deg, transparent calc(-650%/13) calc(50%/13),var(--color-primary) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-primary) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-primary) 0 calc(300%/13)) var(--background-size-half),
+
+    repeating-linear-gradient(-45deg, transparent  calc(-650%/13) calc(50%/13),var(--color-primary) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-primary) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-primary) 0 calc(300%/13)),
+
+    repeating-linear-gradient(-45deg, transparent calc(-650%/13) calc(50%/13),var(--color-primary) 0 calc(100%/13),
+    transparent 0 calc(150%/13),var(--color-primary) 0 calc(200%/13),
+    transparent 0 calc(250%/13),var(--color-primary) 0 calc(300%/13)) var(--background-size-half) oklch(from var(--color-primary) 0.55 c h);
+  background-size: var(--background-size);
 }
 
 h1 {
@@ -156,8 +150,13 @@ p {
 }
 
 a:not([class]) {
+  text-decoration-thickness: .2ex;
   text-decoration-color: var(--color-primary);
   text-underline-offset: .2ex;
+
+  @media(prefers-color-scheme: dark) {
+    text-decoration-color: var(--color-primary-700);
+  }
 }
 
 a:not([class]):hover {
@@ -171,60 +170,40 @@ pre[data-language]:not([data-language=""]) {
   }
 }
 
-.home a {
-  color: var(--color-text);
-  text-decoration-color: var(--color-primary);
-  text-decoration: none;
-  color: var(--color-text);
-  position: relative;
-  transition: all .15s cubic-bezier(.2, 0, 0, 1);
-  z-index: 1;
-}
-
-.home a:after {
-  content: '';
-  display: block;
-  height: 2px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  transition: all .15s cubic-bezier(.2, 0, 0, 1);
-  transform-origin: bottom center;
-  z-index: -1;
-  background: var(--color-primary);
-}
-
-.home a:hover {
-  color: white;
-}
-
-.home a:hover:after {
-    right: 0;
-    left: 0;
-    height: 100%;
-}
-
 .my-apps > *,
 .social > * {
   --space: var(--space-2xs);
   --gutter: var(--space-xs);
 }
 
-.health-shortcuts {
+.health-shortcuts a {
   --color-primary: var(--color-health-shortcuts-accent);
+  @media(prefers-color-scheme: dark) {
+    --color-primary-700: var(--color-health-shortcuts-accent);
+  }
 }
 
 .brb {
   --color-primary: var(--color-brb-accent);
+
+  @media(prefers-color-scheme: dark) {
+    --color-primary-700: var(--color-brb-accent);
+  }
 }
 
 .github {
   --color-primary: var(--color-github-accent);
+
+  @media(prefers-color-scheme: dark) {
+    --color-primary-700: white;
+  }
 }
 
 .mastodon {
   --color-primary: var(--color-mastodon-accent);
+  @media(prefers-color-scheme: dark) {
+    --color-primary-700: var(--color-mastodon-accent);
+  }
 }
 
 ul[role="list"],
