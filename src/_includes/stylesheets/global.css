@@ -174,8 +174,7 @@ pre[data-language]:not([data-language=""]) {
   }
 }
 
-.my-apps > *,
-.social > * {
+.home .stack * {
   --space: var(--space-2xs);
   --gutter: var(--space-xs);
 }
