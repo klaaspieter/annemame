@@ -21,6 +21,9 @@
   "homepage": "https://github.com/klaaspieter/annemame#readme",
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0"
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "i": "^0.3.7",
+    "markdown-it-footnote": "^4.0.0",
+    "npm": "^11.4.1"
   }
 }
