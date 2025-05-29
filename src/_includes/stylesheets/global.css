@@ -185,7 +185,8 @@ pre {
   overflow: hidden;
 }
 
-code {
+
+pre code {
   overflow-x: scroll;
   display: block;
 }
