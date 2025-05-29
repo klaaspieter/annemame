@@ -5,13 +5,14 @@ layout: "layouts/base.html"
 {% css %} {% include "stylesheets/prism/prism-tokyo-night-storm.css" %} {%
 endcss %}
 
-<article class="stack | prose">
+<article class="post | stack | prose">
   <h1>{{ title }}</h1>
-  <ul class="post-metadata">
+  <ul class="post--metadata">
     <li>
+      Published:
       <time datetime="{{ page.date | htmlDateString }}"
-            >{{ page.date | readableDate }}</time
-          >
+        >{{ page.date | readableDate }}</time
+      >
     </li>
   </ul>
 

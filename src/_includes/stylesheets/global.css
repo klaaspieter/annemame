@@ -248,3 +248,11 @@ ol[role="list"] {
   font-size: var(--step--1);
   color: var(--color-text-weaker);
 }
+
+.post .post--metadata {
+  --space: var(--space-2xs);
+  padding-inline-start: 0;
+  font-size: var(--step--1);
+  color: var(--color-text-weaker);
+  list-style: none;
+}
