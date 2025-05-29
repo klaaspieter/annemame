@@ -147,6 +147,7 @@ h1 {
 
 h2 {
   font-weight: normal;
+  font-size: var(--step-4);
 }
 
 p {
@@ -187,10 +188,13 @@ pre {
   overflow: hidden;
 }
 
-
 pre code {
   overflow-x: scroll;
   display: block;
+}
+
+.prose h2 {
+  margin-block-start: var(--space-2xl);
 }
 
 .home {
