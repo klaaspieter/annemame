@@ -31,11 +31,11 @@ What we want is a way to automatically load different configurations for differe
 
 I've made an [example project](https://github.com/klaaspieter/configuration) available on Github that has these 3 things. Let's go over them one by one.
 
-# The Configuration Object
+## The Configuration Object
 
 The [`Configuration`](https://github.com/klaaspieter/configuration/blob/master/Configuration/Configuration.m) object solves requirement one. It holds configuration values in a dictionary and makes them available through a `settingForKey:` method. The object also partially solves requirement 3 because it can populate itself by loading a plist. More on that later.
 
-# Differentiating between environments
+## Differentiating between environments
 
 Before we can fully solve requirement 3 we first need a way of differentiating between environments. I've done this in the example project by creating different build configurations. In Xcode 6.1 you can find build configurations by clicking on the project in the Project Navigator then selecting the project again under "PROJECT" in the editor. From there go to the "Info" tab. You should see a "Configurations" section, which by default, has a Debug and Release configuration. In the example project I called them: Development, Staging and Production. You can create as many as needed and give them any name you see fit.
 
@@ -43,7 +43,7 @@ Before we can fully solve requirement 3 we first need a way of differentiating b
 
 For convenience I also created a scheme for each build configuration. This makes it easy to build for a certain environment by simply selecting it's corresponding scheme.
 
-# Loading different configurations per environment
+## Loading different configurations per environment
 
 Now that we have a way to differentiate between environments it's time to discover how we can load a configuration for each. This is already partially solved by the `Configuration` object. In the `loadDefaults` method it will search for the `ConfigurationPlist` key in the Info.plist. In other words: all we need is a way to make this key have a different value for each environment.
 
@@ -61,7 +61,7 @@ All that's left is to access your settings at runtime:
 [[Configuration defaultConfiguration] settingForKey:@"report_crashes"];
 ```
 
-# Wrapping up
+## Wrapping up
 
 In the Karma app I combine this approach with the [Initializer pattern](http://www.annema.me/clean-up-the-application-delegate-with-initializers) I explained in my previous blog post. Each initializer is passed a Configuration object, allowing it to grab the settings it needs to initialize the portion of the app it's responsible for.
 

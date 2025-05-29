@@ -1,6 +1,6 @@
 ---
-title: 'Why I prefer testing with Specta, Expecta and OCMockito'
-date: '2014-01-22T19:20:00.000+01:00'
+title: "Why I prefer testing with Specta, Expecta and OCMockito"
+date: "2014-01-22T19:20:00.000+01:00"
 ---
 
 **Update August 2014**: Since writing this article, OCMock has released major version 3. Everything said about OCMock is based on version 2.
@@ -8,12 +8,10 @@ date: '2014-01-22T19:20:00.000+01:00'
 If you're testing your Objective-C code (you should) you've probably heard of [Kiwi][] and XCTest. Great! Do you like it? Awesome! You should switch to [Specta][] and [Expecta][]. Why? Keep reading.
 
 [Kiwi]: https://github.com/allending/Kiwi
-
 [Specta]: https://github.com/specta/specta
-
 [Expecta]: https://github.com/specta/expecta
 
-### Uniform interface
+## Uniform interface
 
 Specta provides one uniform interface that works for every kind of value. For example:
 
@@ -38,9 +36,9 @@ If that doesn't convince you; both Kiwi and Specta are based on RSpec and RSpec 
 
 This is their reasoning behind the change, replace RSpec with Kiwi and object with `NSObject`:
 
-> The underlying problem is RSpec’s should syntax: for should to work properly, it must be defined on every object in the system… but RSpec does not own every object in the system and cannot ensure that it always works consistently.
+> The underlying problem is RSpec's should syntax: for should to work properly, it must be defined on every object in the system… but RSpec does not own every object in the system and cannot ensure that it always works consistently.
 
-### Asynchronous Testing
+## Asynchronous Testing
 
 Testing asynchronous code with Specta and Expecta is amazingly well done. It's probably my favorite feature. Both Specta and Expecta support a different use case, which combined will cover all your asynchronous testing needs.
 
@@ -80,13 +78,13 @@ This verifies that the `nameLabel`'s text property equals Ben Day within 1 secon
 
 In my experience the combination of these methods of asynchronous testing cover any use case you might have.
 
-### Separation of concern
+## Separation of concern
 
 Specta itself is a test runner built on top of XCTest with a BDD-style DSL. Because it nicely separates concerns it does not force a particular matcher framework on you. The authors recommend you use Expecta but if you want you can also use XCTest or [OCHamcrest][] matchers. Of course you can else write [your](https://github.com/dblock/ios-snapshot-test-case-expecta) [own](https://github.com/klaaspieter/UISpecta).
 
 [OCHamcrest]: https://github.com/hamcrest/OCHamcrest
 
-### Mocking (and more about separation of concerns)
+## Mocking (and more about separation of concerns)
 
 Initially separation of concern was what I disliked about Specta. Not in the literal sense, who doesn't like nicely separated concerns right? The reason I initially didn't switch from Kiwi to Specta was because Kiwi comes with great mocking built-in. In other words Kiwi mixes multiple concerns into the same framework while Specta doesn't. When I realized I wasn't switching because of something I actually liked about Specta I started looking for a new mocking framework.
 
@@ -108,7 +106,7 @@ OCMockito's clever use of macros make it a very good match with Specta. It also 
 
 [OCMockito]: https://github.com/jonreid/OCMockito
 
-### Wrapping up
+## Wrapping up
 
 Historically Objective-C developers don't have a very good track record when it comes to testing. If you take a look at a language like Ruby where testing is at the core of community you'll find that better tooling, frameworks and education is what drives new rubiests to adopt that mindset.
 
