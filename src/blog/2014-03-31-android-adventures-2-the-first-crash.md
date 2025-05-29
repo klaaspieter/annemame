@@ -1,6 +1,6 @@
 ---
-title: 'Android adventures #2 - The first crash'
-date: '2014-03-31T17:12:00.000+02:00'
+title: "Android adventures #2 - The first crash"
+date: "2014-03-31T17:12:00.000+02:00"
 ---
 
 Last week we introduced bug fix monday's at Karma. The goal is to have a dedicated day to fix bugs that we usually don't have time for. Because, you know, features are better.
@@ -15,7 +15,7 @@ I dislike catching unchecked exceptions though because I could be hiding a diffe
 
 My assumption is that the crasher is related to the Fragment lifecycle thus I want to know more about it's state when the crash happens. The `Fragment` class has method called \[`dump`]\(http://developer.android.com/reference/android/app/Fragment.html#dump(java.lang.String, java.io.FileDescriptor, java.io.PrintWriter, java.lang.String\[])) but it's usage is a bit obscure to a beginning Java developer like myself. It took some googling and trial and error but this is the working solution:
 
-```
+```java
 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 dump("", null, new PrintWriter(outputStream, true), null);
 Crashlytics.log(Log.INFO, TAG, outputStream.toString());

@@ -1,6 +1,6 @@
 ---
 title: Problems with iOS Push Notifications
-date: '2014-02-07T03:34:00.000+01:00'
+date: "2014-02-07T03:34:00.000+01:00"
 ---
 
 Push notifications are a great way to keep users engaged with your iPhone app. The amount of applications that support them led me to conclude that supporting push notification must be trivial. After implementing them myself I'm left with the realization that it is most definitely not.
@@ -11,9 +11,7 @@ Consider the [Karma iOS app][], we have a simple use case, when a push notificat
 
 Starting at the beginning let's take a look at the code paths when a push notification is delivered. There are two `UIApplicationDelegate` methods that need to be implemented. One for when the app is running and one for when it's not.
 
-When the app is not running a push notification will be delivered to this method:
-
-```
+```objc
 - (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 {
     if (options[UIApplicationRemoteNotificationKey]) {
@@ -26,16 +24,16 @@ The `launchOptions` dictionary will contain the information about your push noti
 
 When your app is already running you need to handle incoming notifications differently:
 
-```
+```objc
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)options;
 {
     // Handle the notification
 }
 ```
 
-Unfortunately we're not done yet. A running app can be running in 3 different modes: `UIApplicationStateActive`, `UIApplicationStateInactive` and `UIApplicationStateBackground`. When the application state is in `UIApplicationStateActive` the user is not automatically notified of the push notification and is likely interacting with the app. In the Karma case where we want to show a particular screen we cannot rip a user out of his workflow. The solution:
+Unfortunately we're not done yet. A running app can be running in 3 different modes: `UIApplicationStateActive`, `UIApplicationStateInactive` and `UIApplicationStateBackground`. When the application state is in `UIApplicationStateActive` the user is not automatically notified of the push notification and is likely interacting with the app. In the Karma case where we want to show a particular screen we cannot rip a user out of his workflow. The solution:
 
-```
+```objc
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)options;
 {
     if (application.applicationState != UIApplicationStateActive) {
@@ -44,19 +42,19 @@ Unfortunately we're not done yet. A running app can be running in 3 different mo
 }
 ```
 
-That's not 1, not 2, but 3 possible code paths (the conditional technically makes it 4, but we're not using else or doing anything after it) of which 2 have duplicate code. All that and we still haven't really done anything. What boggles my mind is that *every* iOS developer implementing push notifications has to write this code every time push support is added to an app.
+That's not 1, not 2, but 3 possible code paths (the conditional technically makes it 4, but we're not using else or doing anything after it) of which 2 have duplicate code. All that and we still haven't really done anything. What boggles my mind is that _every_ iOS developer implementing push notifications has to write this code every time push support is added to an app.
 
 Let's fix the duplicate code by introducing a class named `RemoteNotificationHandler`:
 
-```
+```objc
 @interface RemoteNotificationHandler
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification;
 @end
 ```
 
-Wait, you just moved the method to a different object? Yep! How is that going to solve duplicate code? Well, take a look at the  AppDelegate:
+Wait, you just moved the method to a different object? Yep! How is that going to solve duplicate code? Well, take a look at the AppDelegate:
 
-```
+```objc
 - (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)options;
 {
     if (options[UIApplicationRemoteNotificationKey]) {
@@ -80,23 +78,16 @@ To make the problem even more interesting. In the Karma app we didn't simply req
 
 Enough context, let's begin implementing the `RemoteNotificationHandler`:
 
-```
+```objc
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification;
-{
-    if (application.applicationState == UIApplicationStateActive) {
-        return;
-    }
-
-    // We'll do more here, eventually
-}
 ```
 
 Before we do anything else we need to know if the user is currently interacting with the app. If so, we're going to do nothing with the notification. We deemed this sufficient for the Karma app, if you want to simulate the iOS notification bar there are [plenty of libraries](http://cocoapods.org/?q=notification) out there.
 
 Next we'll show the appropriate view controller. The next example is storyboard specific. It also uses [storyboard convenience](https://github.com/klaaspieter/KPAStoryboardConvenience) library because, having written it myself, I like using it:
 
-```
-    - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification;
+```objc
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification;
 {
 			// Application state != Active
 
@@ -105,7 +96,7 @@ Next we'll show the appropriate view controller. The next example is storyboard 
 }
 ```
 
-Ok, this works! Sometimes. We ask the rootViewController of the application's key window to present the `GuestViewController` for us. This works if your storyboard's rootViewController has a segue called `GuestViewControllerSegue`. If the view controller responsible for presenting the guest screen is deeper down into your view controller stack this approach will quickly turn into a mess of  `rootViewController.presentedViewController.topViewController`. This approach will also break when the rootViewController is already presenting a different view controller.
+Ok, this works! Sometimes. We ask the rootViewController of the application's key window to present the `GuestViewController` for us. This works if your storyboard's rootViewController has a segue called `GuestViewControllerSegue`. If the view controller responsible for presenting the guest screen is deeper down into your view controller stack this approach will quickly turn into a mess of `rootViewController.presentedViewController.topViewController`. This approach will also break when the rootViewController is already presenting a different view controller.
 
 I dislike this approach because it's a clear [Law of Demeter](http://en.wikipedia.org/wiki/Law_of_Demeter) violation. Our `RemoteNotificationHelper` has to know about the structure of UIApplication, UIWindow and the rootViewController. If you ever decide to move things around in your app this will most definitely break. Our remote notification handler shouldn't know anything about UIWindow or UIViewController, but due to the isolated nature of view controllers this seems the only method that always works.
 

@@ -1,6 +1,6 @@
 ---
 title: The Builder pattern in Objective-C
-date: '2014-04-04T17:43:00.000+02:00'
+date: "2014-04-04T17:43:00.000+02:00"
 ---
 
 Learning Android and by extension Java has given me some new patterns to apply in my Objective-C code. The one that I'm most excited about is the [builder pattern][].
@@ -11,7 +11,7 @@ The builder pattern is an object creation pattern that fits well with Java's syn
 
 Let's start off with what it looks like in Java. For my [talk about applying patterns from other languages](http://www.meetup.com/new-york-ios-developer/events/166708792/) I used a Pizza model as an example, I'll use the same here. This is what it looks like:
 
-```
+```java
 Pizza pizza = new Pizza.Builder()
     .size(12)
     .pepperoni(true)
@@ -25,13 +25,13 @@ This is the problem the builder pattern solves. It decouples the construction of
 
 A direct port to Objective-C looks something like this:
 
-```
+```objc
 Pizza *pizza = [[[[[PizzaBuilder alloc] init] setPepperoni:YES] setMushrooms:YES] setSize:12] build];
 ```
 
 Not very fluent is it? Unlike others I don't mind Objective-C's square brackets but there's a limit. The following is a more idiomatic approach. It makes use of Objective-C's dot syntax to set the properties:
 
-```
+```objc
 PizzaBuilder *builder = [[PizzaBuilder alloc] init];
 builder.size = 12;
 builder.pepperoni = YES;
@@ -45,7 +45,7 @@ One of the most common mistakes I see when people are trying to adopt a new lang
 
 In order to make this pattern fit Objective-C we're going to apply another pattern. This one comes from Ruby. I don't know what the official name for it is, I just call it the Ruby configuration block pattern. This is our final idiomatic Objective-C implementation:
 
-```
+```objc
 Pizza *pizza = [Pizza pizzaWithBlock:^(PizzaBuilder *builder]) {
     builder.size = 12;
     builder.pepperoni = YES;
@@ -57,7 +57,7 @@ We made the interface fluent, the scope of the builder is limited to within the 
 
 To finish, this is the `pizzaWithBlock:` method implementation:
 
-```
+```objc
 + (instancetype)pizzaWithBlock:(PizzaBuilderBlock)block {
     NSParameterAssert(block);
 
@@ -69,7 +69,7 @@ To finish, this is the `pizzaWithBlock:` method implementation:
 
 The builder's `build` method is implemented as:
 
-```
+```objc
 - (Pizza *)build;
 {
     return [[Pizza alloc] initWithBuilder:self];
@@ -78,7 +78,7 @@ The builder's `build` method is implemented as:
 
 And finally Pizza's `initWithBuilder:` method:
 
-```
+```objc
 - (id)initWithBuilder(PizzaBuilder *)builder;
 {
     self = [super init];

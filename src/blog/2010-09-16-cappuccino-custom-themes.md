@@ -1,20 +1,19 @@
 ---
 title: Cappuccino Custom Themes
-date: '2010-09-16T19:17:00.000+02:00'
+date: "2010-09-16T19:17:00.000+02:00"
 ---
 
 A while ago I wrote a blog post about [the basics of Cappuccino theming](http://www.annema.me/blog/post/the-basics-of-cappuccino-theming). Since then I've got a lot of questions about how to create fully customized themes.
 
 The first step in building your own custom theme is to create a theme descriptor. If you've built Cappuccino [from source][Instructions] you can create one using the following command:
 
-```
+```sh
 capp gen -t ThemeDescriptor --build -F BlendKit [Theme name]
 ```
 
 If you haven't installed Cappuccino from source, you can [download][] a default theme descriptor.
 
 [Instructions]: http://github.com/280north/cappuccino/wiki/Getting-and-Building-the-Source
-
 [download]: http://dl.dropbox.com/u/3415875/Blog/Cappuccino%20Theming/ThemeDescriptor.zip
 
 You should now have a folder with the theme descriptor file, a resources directory and a Jakefile. A theme descriptor also includes a handy showcase application which you can use to preview your theme. Running the showcase is simply a matter of opening `index.html` or `index-debug.html`.
@@ -29,12 +28,11 @@ Theming another class is done by implementing another `+(<Class>)themed<Class>` 
 
 [Aristo's theme descriptor]: http://github.com/280north/cappuccino/blob/master/AppKit/Themes/Aristo/ThemeDescriptors.j
 
-The next step is building your theme. You can do this by running `jake debug` or `jake install` inside your theme directory. The build process will take the resources and theme descriptor and build it into a theme blend. After the build is done, the theme blend can be found in: `Build/[Configuration]/[Theme name].blend>`. \[Configuration] is either Debug or Release, depending on the jake argument used.
+The next step is building your theme. You can do this by running `jake debug` or `jake install` inside your theme directory. The build process will take the resources and theme descriptor and build it into a theme blend. After the build is done, the theme blend can be found in: `Build/[Configuration]/[Theme name].blend>`. [Configuration] is either Debug or Release, depending on the jake argument used.
 
 The theme blend is what is needed to actually load the theme in your Cappuccino application. The easiest way to load the theme is by adding the following to your application's Info.plist:
 
-```
-:::XML
+```xml
 <key>CPDefaultTheme</key>
 <string>[Theme name]</string>
 ```
@@ -45,8 +43,7 @@ If you load your application, you'll see there's an error; Cappuccino can't find
 
 As mentioned before the previously described method of loading a Theme will completely override Aristo. If you want to use Aristo in addition to your own theme you can load the theme blend manually. The following code shows how this is done:
 
-```
-:::Objective-J
+```objc
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
 {
 	var bundle = [CPBundle mainBundle],
@@ -66,7 +63,7 @@ When using this method it's advisable to show your application after the blend f
 
 After the blend is loaded you can apply it to any view:
 
-```
+```objc
 var customTheme = [CPTheme themeNamed:<Theme name>],
      button = [CPButton buttonWithTitle:@"Custom themed button"];
 

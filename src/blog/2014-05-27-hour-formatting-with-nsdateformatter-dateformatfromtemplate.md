@@ -1,6 +1,6 @@
 ---
 title: Hour formatting with NSDateFormatter dateFormatFromTemplate
-date: '2014-05-27T19:00:00.000+02:00'
+date: "2014-05-27T19:00:00.000+02:00"
 ---
 
 **TLDR;** Using NSDateFormatter's `dateFormatFromTemplate:options:locale:` for 12/24 hours? Use "j" instead of "h" or "H" for the hour format.
@@ -9,13 +9,13 @@ Last week I started a fight with NSDateFormatter. I needed to format just the ho
 
 To generate the date format I'm using `NSDateFormatter`'s `dateFormatFromTemplate:options:locale:` class method. This was my first try:
 
-```
+```objc
 [NSDateFormatter dateFormatFromTemplate:@"HH a" options:0 locale:[NSLocale currentLocale];
 ```
 
 The template string uses 24 hour format but also includes the am/pm designator 'a'. HH stands for 0 prefixed 0-23 hours. I wasn't exactly sure how to use this method but my expectation was that it would be rewritten to "hh a" and "HH" for 12 and 24 hours respectively.
 
-This appears works. On my phone (set to nl\_NL and 24 hour time format), toggling the 12/24 hour setting would correctly change the generated format. In the simulator and on one of our test phones it did not. The test phone was set to 12 hour clock and it's locale was set to en\_US, but `dateFromTemplate:options:locale:` always returned "HH" as the date format.
+This appears works. On my phone (set to nl_NL and 24 hour time format), toggling the 12/24 hour setting would correctly change the generated format. In the simulator and on one of our test phones it did not. The test phone was set to 12 hour clock and it's locale was set to en_US, but `dateFromTemplate:options:locale:` always returned "HH" as the date format.
 
 I changed the template to read `hh a`. This again appeared to work except on my phone. Which would now always format 12 hour time. I reversed the problem.
 
@@ -31,7 +31,7 @@ My mind would read that it shouldn't be used in pattern data and move on. Unfort
 
 Which is exactly the purpose of this NSDateFormatter API, just worded somewhat confusingly. Eventually the fix was to change the template line to:
 
-```
+```objc
 [NSDateFormatter dateFormatFromTemplate:@"jj" options:0 locale:[NSLocale currentLocale];
 ```
 

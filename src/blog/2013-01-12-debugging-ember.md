@@ -1,20 +1,18 @@
 ---
 title: Debugging Ember
-date: '2013-01-12T15:30:00.000+01:00'
+date: "2013-01-12T15:30:00.000+01:00"
 ---
 
 While building the [Karma customer dashboard][] I discovered several interesting ways to debug Ember apps. Some of these are my own, others I've taken from Tom Dale's excellent [debugging Ember talk][].
 
 [Karma customer dashboard]: https://dashboard.yourkarma.com
-
 [debugging Ember talk]: http://vimeo.com/37539737
 
 # Observers
 
 I don't need explicit observers often in production code but I do use them frequently for debugging. Adding an observer is very similar to a computed property:
 
-```
-	:::javascript
+```javascript
 propertyObserver: function() {
   // Called when the value of property changes
 }.observes('property');
@@ -28,16 +26,14 @@ Ember does some very cool stuff to give you useful string representations of you
 
 One option is to call toString on the property like so:
 
-```
-	:::javascript
+```javascript
 applicationController.toString(); // "<App.ApplicationController:ember2366>"
 ```
 
 Another way that is less typing is to append "" like so:
 
-```
-	:::javascript
-	applicationController + "" // "<App.ApplicationController:ember2366>"
+```javascript
+applicationController + ""; // "<App.ApplicationController:ember2366>"
 ```
 
 # Handlebars

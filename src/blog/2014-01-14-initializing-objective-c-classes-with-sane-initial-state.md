@@ -1,11 +1,11 @@
 ---
 title: Initializing Objective-C classes with sane initial state
-date: '2014-01-14T18:54:00.000+01:00'
+date: "2014-01-14T18:54:00.000+01:00"
 ---
 
 Because Objective-C has the concept of [designated initializers][], you have to ensure your classes are instantiated using sane initial state. Take for example a fictitious person class with the designated initializer `initWithName:`
 
-```
+```objc
 @implementation Person
 - (id)initWithName:(NSString *)name;
 {
@@ -22,7 +22,7 @@ Because Objective-C has the concept of [designated initializers][], you have to 
 
 Now in a view controller this happens:
 
-```
+```objc
 - (void)viewWillAppear:(BOOL)animated;
 {
     [super viewWillAppear:animated];
@@ -35,7 +35,7 @@ The author accidentally forgot to use the designated initializer and the program
 
 Let's take a look an Foundation class to find a solution. Specifically a possible implementation of the NSNumberFormatter `init` method:
 
-```
+```objc
 - (id)init;
 {
     return [self initWithLocale:[NSLocale currentLocale]];
@@ -48,7 +48,7 @@ However more often than not such a sane default doesn't exist. In the example of
 
 Let's see what that looks like in our Person class:
 
-```
+```objc
 @implementation Person
 - (id)init;
 {
@@ -71,7 +71,7 @@ This 100% guarantees that your classes initial state is correct. If, like in our
 
 This also works for classes that already have a designated initializer like UIView:
 
-```
+```objc
 // In a UIView subclass
 - (id)initWithFrame:(CGRect)frame;
 {
@@ -92,7 +92,7 @@ This also works for classes that already have a designated initializer like UIVi
 
 Finally the initialization code paths are trivial to test:
 
-```
+```objc
 describe(@"Person", ^{
     it(@"cannot be created without a name", ^{
         expect(^{

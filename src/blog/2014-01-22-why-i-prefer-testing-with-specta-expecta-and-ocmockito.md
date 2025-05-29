@@ -17,7 +17,7 @@ If you're testing your Objective-C code (you should) you've probably heard of [K
 
 Specta provides one uniform interface that works for every kind of value. For example:
 
-```
+```objc
 it("equals YES", ^{
     expect(view.isHidden).to.equal(YES);
     // Yes, I'm aware there is a isTruthy matcher but that wouldn't really prove my point...
@@ -26,7 +26,7 @@ it("equals YES", ^{
 
 Compare this to the Kiwi alternative:
 
-```
+```objc
 it(@"equals YES", ^{
     [theValue(view.isHidden) should] equal:theValue(YES)];
 });
@@ -46,7 +46,7 @@ Testing asynchronous code with Specta and Expecta is amazingly well done. It's p
 
 Let's take a look at Specta first:
 
-```
+```objc
 it(@"does something asynchronously", ^AsyncBlock{
     [object doSomethingAsynchronously:^(BOOL wasDone) {
         expect(wasDone).to.beTruthy();
@@ -59,7 +59,7 @@ it(@"does something asynchronously", ^AsyncBlock{
 
 This also works on `before` blocks. For example to ensure that a view controller is presented before any expectations run:
 
-```
+```objc
 before(^AsyncBlock{
     [_mainViewController presentViewController:_viewController animated:YES completion:done];
 });
@@ -69,7 +69,7 @@ Be careful with this approach. If you're doing TTD or BDD you want your test sui
 
 When you test higher up the stack you'll also want to test the outcome of the asynchronous callback. For example that the completion of a network request updates your UI:
 
-```
+```objc
 it(@"sets the user's name when the user loads", ^{
     [_view.user load];
     expect(_view.nameLabel.text).will.equal(@"Ben Day");
@@ -96,7 +96,7 @@ My first pick was [OCMock][]. Mostly because it's recommend by Specta's authors.
 
 After a brief search for another mocking framework I settled on [OCMockito][] and I've been using it without complaints ever since. Take a look at the following spec:
 
-```
+```objc
 it(@"has a dependency that does something", ^{
      _subject.dependency = mock([Dependency class]);
      [_subject doSomethingWithDependency];

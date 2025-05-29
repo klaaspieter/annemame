@@ -7,13 +7,13 @@ Ever wanted to scroll a UIWebView programmatically on the iPad or iPhone? Unfort
 
 Using this method we can easily scroll a web view like so:
 
-```
+```objc
 [webView stringByEvaluatingJavaScriptFromString:@"window.scrollTo(0.0, 100.0)"];
 ```
 
 It's also possible to save the scroll state of the web view through javascript:
 
-```
+```objc
 CGFloat xOffset = [[[self webView] stringByEvaluatingJavaScriptFromString:@"pageXOffset"] floatValue];
 CGFloat yOffset = [[[self webView] stringByEvaluatingJavaScriptFromString:@"pageYOffset"] floatValue];
 ```
