@@ -168,10 +168,26 @@ a:not([class]):hover {
 }
 
 pre[data-language]:not([data-language=""]) {
+  position: relative;
+
   &::before {
-    content: attr(data-language) ":";
+    content: attr(data-language);
     display: block;
+    position: absolute;
+    padding: 0;
+    top: 1ex;
+    right: 1ch;
   }
+}
+
+pre {
+  padding: var(--space-m);
+  overflow: hidden;
+}
+
+code {
+  overflow-x: scroll;
+  display: block;
 }
 
 .home {
