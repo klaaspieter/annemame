@@ -150,6 +150,10 @@ h2 {
   font-size: var(--step-4);
 }
 
+article {
+  margin-block-end: var(--space-xl);
+}
+
 a:not([class]) {
   text-decoration-thickness: .2ex;
   text-decoration-color: var(--color-primary);
