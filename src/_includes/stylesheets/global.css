@@ -95,7 +95,7 @@ body {
   font-size: var(--step-2);
 
   padding-block: var(--space-l);
-  margin-block-end: var(--space-l);
+  margin-block-end: var(--space-xl);
 
   background-color: oklch(from var(--color-primary-800) l c h / 0.3);
 }
