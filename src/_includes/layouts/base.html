@@ -28,6 +28,10 @@
         <div class="cluster">
         <a href="/">annema.me</a>
 
+        {% if eleventyNavigation.parent == "blog" %}
+        / <a href="/blog">blog</a>
+        {% endif %}
+
         <div class="theme-picker">
           <button id="theme-almond">
             <span class="visually-hidden">Almond</span>

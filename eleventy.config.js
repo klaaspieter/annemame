@@ -1,4 +1,5 @@
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
+import navigation from "@11ty/eleventy-navigation";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import markdownItFootnote from "markdown-it-footnote";
 import filters from "./_config/filters.js";
@@ -14,6 +15,7 @@ export default async function (eleventyConfig) {
     },
   });
   eleventyConfig.addPlugin(filters);
+  eleventyConfig.addPlugin(navigation);
 
   eleventyConfig.amendLibrary("md", (md) => {
     md.use(markdownItFootnote);
