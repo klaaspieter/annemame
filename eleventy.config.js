@@ -3,6 +3,7 @@ import navigation from "@11ty/eleventy-navigation";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import markdownItFootnote from "markdown-it-footnote";
 import filters from "./_config/filters.js";
+import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 
 export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
@@ -16,6 +17,23 @@ export default async function (eleventyConfig) {
   });
   eleventyConfig.addPlugin(filters);
   eleventyConfig.addPlugin(navigation);
+  eleventyConfig.addPlugin(feedPlugin, {
+    type: "atom",
+    outputPath: "/feed.xml",
+    stylesheet: "/pretty-atom-feed.xsl",
+    collection: {
+      name: "posts",
+      limit: 0,
+    },
+    metadata: {
+      language: "en",
+      title: "annema.me",
+      base: "https://annema.me/",
+      author: {
+        name: "Klaas Pieter Annema",
+      },
+    },
+  });
 
   eleventyConfig.amendLibrary("md", (md) => {
     md.use(markdownItFootnote);
@@ -41,7 +59,7 @@ export default async function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("posts", (collection) => {
-    return [...collection.getFilteredByGlob("./src/blog/*.md")].reverse();
+    return [...collection.getFilteredByGlob("./src/blog/*.md")];
   });
 
   return {

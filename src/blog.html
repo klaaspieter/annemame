@@ -8,7 +8,7 @@ eleventyNavigation:
 <article class="blog">
   <h1>Blog</h1>
   <ol role="list" class="stack">
-    {% for post in collections.posts %}
+    {% for post in collections.posts | reverse %}
     <li class="cluster">
       <time datetime="{{ post.date | htmlDateString }}"
             >{{ post.date | readableDate }}</time
