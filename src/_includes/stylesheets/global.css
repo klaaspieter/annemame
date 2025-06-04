@@ -36,6 +36,7 @@
 
   --color-background: var(--color-primary-950);
   --color-background-pattern: oklch(from var(--color-primary-800) l c h / 0.2);
+  --color-background-banner: oklch(from var(--color-primary-800) l c h / 0.3);
 }
 
 @media(prefers-color-scheme: dark) {
@@ -97,7 +98,7 @@ body {
   padding-block: var(--space-l);
   margin-block-end: var(--space-xl);
 
-  background-color: oklch(from var(--color-primary-800) l c h / 0.3);
+  background-color: var(--color-background-banner);
 }
 
 .main-content {
@@ -256,4 +257,20 @@ ol[role="list"] {
   font-size: var(--step--1);
   color: var(--color-text-weaker);
   list-style: none;
+}
+
+.post .post--outdated {
+  margin-block: var(--space-m);
+  padding: var(--space-m);
+  border: 1px solid var(--color-primary-300);
+  border-radius: var(--border-radius);
+  background-color: var(--color-background-banner);
+  color: var(--color-text);
+}
+
+@media(prefers-color-scheme: dark) {
+  .post .post--outdated {
+    border-color: var(--color-primary-700);
+    background-color: var(--color-background-banner);
+  }
 }

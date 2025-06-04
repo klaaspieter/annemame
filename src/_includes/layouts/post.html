@@ -16,5 +16,9 @@ endcss %}
     </li>
   </ul>
 
-  {{ content | safe }}
+  {% if "archive" in tags %}
+  <div class="post--outdated">
+    <p>This post is archived, the content may be out of date.</p>
+  </div>
+  {% endif %} {{ content | safe }}
 </article>

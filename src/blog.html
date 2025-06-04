@@ -8,13 +8,21 @@ eleventyNavigation:
 <article class="blog">
   <h1>Blog</h1>
   <ol role="list" class="stack">
-    {% for post in collections.posts | reverse %}
+    {% for post in collections.post | reverse %} {% if "archive" not in
+    post.data.tags %}
     <li class="cluster">
       <time datetime="{{ post.date | htmlDateString }}"
-            >{{ post.date | readableDate }}</time
-          >
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        >{{ post.date | readableDate }}</time
+      >
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
     </li>
-    {% endfor %}
+    {% endif %} {% endfor %}
   </ol>
+
+  <div class="stack" style="margin-top: var(--space-xl)">
+    <p>
+      Looking for older posts? Check out the
+      <a href="/blog/archive">archive</a>.
+    </p>
+  </div>
 </article>
