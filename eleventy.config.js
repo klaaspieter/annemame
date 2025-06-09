@@ -22,7 +22,7 @@ export default async function (eleventyConfig) {
     outputPath: "/feed.xml",
     stylesheet: "/pretty-atom-feed.xsl",
     collection: {
-      name: "posts",
+      name: "post",
       limit: 0,
     },
     metadata: {
