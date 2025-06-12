@@ -1,4 +1,11 @@
-<title>{{ title or metadata.title }}</title>
+{% set pageTitle = title + " - annema.me" %}
+
+{# prevent duplication when we're on the home page #}
+{% if title === "annema.me" %}
+  {% set pageTitle = title %}
+{% endif %}
+
+<title>{{ pageTitle }}</title>
 
 <meta property="og:site_name" content="annema.me" />
 <meta property="og:title" content="Klaas Pieter Annema - Product engineer" />
