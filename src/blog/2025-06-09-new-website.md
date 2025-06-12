@@ -44,5 +44,3 @@ background pattern work. Dreamed about one day having a site so cool that it's
 day](https://alistairshepherd.uk/). I appreciated all this for what it was: [art](https://mastodon.design/@kp/114042674835768877). Accessible to anyone.
 
 I left all the walled gardens but I didn't replace it with anything. This _gestures to the surroundings_ is my replacement. My own humble space on the internet. Outside of any walled gardens and accessible to anyone. Welcome.
-
-Started out as a “new site” post because more about burnout and rediscoring my joy in creation.
