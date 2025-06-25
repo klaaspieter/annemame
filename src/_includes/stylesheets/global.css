@@ -243,10 +243,16 @@ ol[role="list"] {
   padding: 0;
 }
 
-.blog li time {
-  position: absolute;
-  translate: -100%;
-  padding-inline-end: 1ch;
+.post-item__icon, .post-item__date {
+  vertical-align: middle;
+}
+
+.post-item__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.post-item__date {
   font-size: var(--step--1);
   color: var(--color-text-weaker);
 }
