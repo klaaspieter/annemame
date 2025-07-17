@@ -1,5 +1,5 @@
 ---
-title: "Dynamic Bundle Identifiers in Xcode: Using xcconfig for Different Configurations"
+title: "Dynamic bundle identifiers in Xcode: Using xcconfig for different configurations"
 ---
 
 Generally in Xcode you have two configurations: Debug and Release. It's often a good idea to have a different bundle identifier for each configuration so that your debug builds don't replace the release builds on your device.
@@ -72,7 +72,7 @@ BUNDLE_ID_SUFFIX_Release =
 PRODUCT_BUNDLE_IDENTIFIER_SUFFIX = $(BUNDLE_ID_SUFFIX_$(CONFIGURATION))
 ```
 
-Xcode sees the `$(CONFIGURATION)` and replaces it with `Debug` or `Release`. The outer `$()` then becomes `$(BUNDLE_ID_SUFFIX_Debug)` or `$(BUNDLE_ID_SUFFIX_Release)` which is Xcode replaces with one of the values we've defined on the first two lines: `dev` for `BUNDLE_ID_SUFFIX_Debug` and nothing for `BUNDLE_ID_SUFFIX_Release`.
+Xcode sees the `$(CONFIGURATION)` and replaces it with `Debug` or `Release`. The outer `$()` then becomes `$(BUNDLE_ID_SUFFIX_Debug)` or `$(BUNDLE_ID_SUFFIX_Release)` which Xcode replaces with one of the values we've defined on the first two lines: `dev` for `BUNDLE_ID_SUFFIX_Debug` and nothing for `BUNDLE_ID_SUFFIX_Release`.
 
 ## The result
 
