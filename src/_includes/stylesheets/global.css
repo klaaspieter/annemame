@@ -91,6 +91,30 @@ body {
     margin-block:0
 }
 
+table {
+  text-align: left;
+  border-collapse: collapse;
+
+  --border-color: var(--color-primary-50);
+}
+
+thead {
+  border-block-end: 2px solid var(--border-color);
+}
+
+tfoot {
+  border-block-start: 2px solid var(--border-color);
+}
+
+th, td {
+  border: 1px solid color-mix(in srgb, var(--border-color), transparent 85%);
+  padding: var(--space-2xs) var(--space-3xs);
+}
+
+tbody tr:nth-child(odd) {
+	background: color-mix(in srgb, var(--color-primary), transparent 95%);
+}
+
 .brand-header {
   --gutter: var(--space-xs);
   font-size: var(--step-2);
