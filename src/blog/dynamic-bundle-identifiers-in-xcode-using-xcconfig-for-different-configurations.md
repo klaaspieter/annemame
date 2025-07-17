@@ -100,7 +100,7 @@ PRODUCT_BUNDLE_IDENTIFIER = $(PRODUCT_BUNDLE_IDENTIFIER_PREFIX).ios$(PRODUCT_BUN
 // iOS (Extension).xcconfig
 #include "Base.xcconfig"
 
-PRODUCT_BUNDLE_IDENTIFIER = $(PRODUCT_BUNDLE_IDENTIFIER_PREFIX).ios.web-extension$(PRODUCT_BUNDLE_IDENTIFIER_SUFFIX)
+PRODUCT_BUNDLE_IDENTIFIER = $(PRODUCT_BUNDLE_IDENTIFIER_PREFIX).ios$(PRODUCT_BUNDLE_IDENTIFIER_SUFFIX).web-extension
 ```
 
 ```xcconfig
@@ -114,5 +114,16 @@ PRODUCT_BUNDLE_IDENTIFIER = $(PRODUCT_BUNDLE_IDENTIFIER_PREFIX).macos$(PRODUCT_B
 // macOS (Extension).xcconfig
 #include "Base.xcconfig"
 
-PRODUCT_BUNDLE_IDENTIFIER = $(PRODUCT_BUNDLE_IDENTIFIER_PREFIX).macos.web-extension$(PRODUCT_BUNDLE_IDENTIFIER_SUFFIX)
+PRODUCT_BUNDLE_IDENTIFIER = $(PRODUCT_BUNDLE_IDENTIFIER_PREFIX).macos$(PRODUCT_BUNDLE_IDENTIFIER_SUFFIX).web-extension
 ```
+
+The final bundle identifiers resolve to the following. Note that web-extension is a suffix,
+this is required because an extension's bundle identifier needs to be prefixed
+by the bundle identifier of the containing app.
+
+| Target            | Debug                                              | Release                                        |
+| ----------------- | -------------------------------------------------- | ---------------------------------------------- |
+| iOS (App)         | me.annema.safari-extension.ios.dev                 | me.annema.safari-extension.ios                 |
+| iOS (Extension)   | me.annema.safari-extension.ios.dev.web-extension   | me.annema.safari-extension.ios.web-extension   |
+| macOS (App)       | me.annema.safari-extension.macos.dev               | me.annema.safari-extension.macos               |
+| macOS (Extension) | me.annema.safari-extension.macos.dev.web-extension | me.annema.safari-extension.macos.web-extension |
