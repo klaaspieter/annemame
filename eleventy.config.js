@@ -14,6 +14,9 @@ export default async function (eleventyConfig) {
         return resolvePrismLanguage(language);
       },
     },
+    init: function ({ Prism }) {
+      Prism.languages.xcconfig = Prism.languages.plain;
+    },
   });
   eleventyConfig.addPlugin(filters);
   eleventyConfig.addPlugin(navigation);
