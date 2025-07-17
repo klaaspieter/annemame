@@ -15,7 +15,22 @@ export default async function (eleventyConfig) {
       },
     },
     init: function ({ Prism }) {
-      Prism.languages.xcconfig = Prism.languages.plain;
+      Prism.languages.xcconfig = {
+        comment: {
+          pattern: /\/\/.*/,
+          greedy: true,
+        },
+        include: {
+          pattern: /#include\s+"[^"]*"/,
+          inside: {
+            directive: /#include/,
+            string: /"[^"]*"/,
+          },
+        },
+        key: /^[A-Z_][A-Z0-9_]*(?=\s*(?:\[|=))/m,
+        string: /"[^"]*"/,
+        operator: /=/,
+      };
     },
   });
   eleventyConfig.addPlugin(filters);
@@ -91,6 +106,7 @@ const PRISM_LANGUAGES = {
   html: "HTML",
   xml: "XML",
   svg: "SVG",
+  xcconfig: "Xcode Configuration",
   mathml: "MathML",
   ssml: "SSML",
   rss: "RSS",
