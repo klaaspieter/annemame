@@ -315,6 +315,7 @@ ol[role="list"] {
 }
 
 .heart-rate {
+  margin-block-start: var(--space-m);
   display: flex;
   justify-content: center;
   background: var(--color-primary);
