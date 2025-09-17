@@ -33,6 +33,7 @@
   --color-brb-accent: #30b0c7;
   --color-mastodon-accent: #6364ff;
   --color-github-accent: #1a1f25;
+  --color-eemgoed-accent: #4d7c0f;
 
   --color-background: var(--color-primary-950);
   --color-background-pattern: oklch(from var(--color-primary-800) l c h / 0.2);
@@ -244,6 +245,14 @@ pre code {
 
   @media(prefers-color-scheme: dark) {
     --color-primary-700: var(--color-brb-accent);
+  }
+}
+
+.eemgoed {
+  --color-primary: var(--color-eemgoed-accent);
+
+  @media(prefers-color-scheme: dark) {
+    --color-primary-700: var(--color-eemgoed-accent);
   }
 }
 
