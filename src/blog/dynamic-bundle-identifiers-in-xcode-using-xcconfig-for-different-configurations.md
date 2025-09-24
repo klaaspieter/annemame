@@ -1,5 +1,6 @@
 ---
 title: "Dynamic bundle identifiers in Xcode: Using xcconfig for different configurations"
+date: "2025-07-17"
 ---
 
 Generally in Xcode you have two configurations: Debug and Release. It's often a good idea to have a different bundle identifier for each configuration so that your debug builds don't replace the release builds on your device.

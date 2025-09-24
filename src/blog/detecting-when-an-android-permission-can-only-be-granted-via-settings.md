@@ -1,5 +1,6 @@
 ---
 title: Detecting when an Android permission can only be granted via Settings
+date: "2025-06-19"
 ---
 
 I was surprised to discover how easy it is, even when following the [official Android permissions guide](https://developer.android.com/training/permissions/requesting), to end up with a button that does nothing.
@@ -98,7 +99,7 @@ currentState is PermissionStatus.Denied && currentState.shouldShowRationale &&
 newState is PermissionStatus.Denied && !newState.shouldShowRationale
 ```
 
-## Rejecting partial permissions:
+## Rejecting partial permissions
 
 The flow for partial permissions is slightly different:
 
