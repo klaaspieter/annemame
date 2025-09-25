@@ -18,5 +18,4 @@ git clone https://github.com/klaaspieter/annemame.git
 
 ## Deploy
 
-Any push to `main` is build using `./bin/build` and deployed to GitHub pages
-using [.github/workflows/main.yml](.github/workflows/main.yml).
+Run `kamal deploy`
