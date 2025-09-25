@@ -6,7 +6,7 @@ image: kp/annemame
 # Deploy to these servers.
 servers:
   web:
-    - 91.99.116.152
+    - annema.me
 
 # Enable SSL auto certification via Let's Encrypt and allow for multiple apps on a single web server.
 # Remove this section when using multiple web servers and ensure you terminate SSL at your load balancer.
@@ -16,8 +16,11 @@ proxy:
   ssl: true
   hosts:
     - annema.me
+    - www.annema.me
     - annema.nyc
+    - www.annema.nyc
     - imme.nyc
+    - www.imme.nyc
 
 # Credentials for your image host.
 registry:
