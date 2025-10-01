@@ -95,6 +95,9 @@ body {
 table {
   text-align: left;
   border-collapse: collapse;
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
 
   --border-color: var(--color-primary-50);
 }
