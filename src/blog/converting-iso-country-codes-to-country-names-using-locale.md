@@ -3,7 +3,7 @@ title: Converting ISO country codes to country names using Locale
 date: 2025-10-31
 ---
 
-Because IPinfo’s open API always returns country codes, I needed to convert them to country names for better address formatting. For example, [1.1.1.1](https://ipinfo.io/1.1.1.1/json) returns AU for Australia. The paid tiers ([Lite](https://ipinfo.io/developers/lite-api), [Core](https://ipinfo.io/developers/core-api), [Plus](https://ipinfo.io/developers/plus-api)) have both codes and names, but the open API doesn’t.
+Because IPinfo's open API always returns country codes, I needed to convert them to country names for better address formatting. For example, [1.1.1.1](https://ipinfo.io/1.1.1.1/json) returns AU for Australia. The authenticated tiers (free [Lite](https://ipinfo.io/developers/lite-api) and paid [Core](https://ipinfo.io/developers/core-api)/[Plus](https://ipinfo.io/developers/plus-api)) have both codes and names, but the open API doesn't.
 
 At first I hoped this would do the trick:
 
