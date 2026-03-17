@@ -25,9 +25,8 @@
 
   --space: var(--space-m);
 
-  --color-border: var(--color-gray-300);
+  --color-border: var(--color-primary-50);
   --border-radius: 5px;
-  --box-shadow-card: 0 0 0 1px var(--color-border), 0 1px 5px rgba(12, 12, 12, 0.05), 0 0 40px rgba(12, 12, 12, 0.015);
 
   --color-health-shortcuts-accent: #fd1148;
   --color-brb-accent: #30b0c7;
@@ -50,6 +49,8 @@
     --space: var(--space-m);
 
     --color-github-accent: #1a1f25;
+
+    --color-border: var(--color-primary-400);
 
     --color-background: var(--color-primary-50);
     --color-background-pattern: var(--color-primary-100);
@@ -99,24 +100,33 @@ table {
   max-width: fit-content;
   overflow-x: auto;
 
-  --border-color: var(--color-primary-50);
+  --row-background-color: var(--color-primary);
+
+  @media(prefers-color-scheme: dark) {
+    --row-background-color: var(--color-primary-800);
+  }
 }
 
+
 thead {
-  border-block-end: 2px solid var(--border-color);
+  border-block-end: 2px solid var(--color-border);
+}
+
+thead th {
+  border: none;
 }
 
 tfoot {
-  border-block-start: 2px solid var(--border-color);
+  border-block-start: 2px solid var(--color-border);
 }
 
 th, td {
-  border: 1px solid color-mix(in srgb, var(--border-color), transparent 85%);
-  padding: var(--space-2xs) var(--space-3xs);
+  border: 1px solid color-mix(in srgb, var(--color-border), transparent 70%);
+  padding: var(--space-3xs) var(--space-xs);
 }
 
 tbody tr:nth-child(odd) {
-	background: color-mix(in srgb, var(--color-primary), transparent 95%);
+	background: color-mix(in srgb, var(--row-background-color), transparent 95%);
 }
 
 .brand-header {
@@ -188,10 +198,6 @@ a:not([class]) {
   text-decoration-thickness: .2ex;
   text-decoration-color: var(--color-primary);
   text-underline-offset: .2ex;
-
-  @media(prefers-color-scheme: dark) {
-    text-decoration-color: var(--color-primary-700);
-  }
 }
 
 a:not([class]):hover {
