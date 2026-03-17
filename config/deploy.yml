@@ -32,3 +32,34 @@ registry:
 # Configure builder setup.
 builder:
   arch: amd64
+
+accessories:
+  umami-db:
+    image: postgres:17
+    host: annema.me
+    port: "127.0.0.1:5433:5432"
+    env:
+      clear:
+        POSTGRES_USER: umami
+        POSTGRES_DB: umami
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - umami-db-data:/var/lib/postgresql/data
+
+  umami:
+    image: docker.umami.is/umami-software/umami:3.0.3
+    host: annema.me
+    env:
+      secret:
+        - DATABASE_URL
+
+aliases:
+  add-umami-to-proxy: |
+    server exec docker exec kamal-proxy kamal-proxy deploy umami
+    --target "annemame-umami:3000"
+    --host "stats.annema.me"
+    --tls
+    --health-check-path "/api/heartbeat"
+    --buffer-requests
+    --buffer-responses
