@@ -88,6 +88,10 @@ export default async function (eleventyConfig) {
 }
 
 function isCSSNakedDay() {
+  if (process.env.CSS_NAKED_DAY) {
+    return true;
+  }
+
   const now = Date.now();
   const currentYear = new Date().getFullYear();
   const startEpoch = new Date(`${currentYear}-04-09T00:00:00+1400`).getTime();
