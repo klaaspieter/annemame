@@ -28,7 +28,7 @@ jobs:
           DEPLOY_SSH_KEY: op://annema.me/Hetzner authentication/private key?ssh-format=openssh
           SSH_KNOWN_HOSTS: op://annema.me/Production/known_hosts
 
-      - uses: webfactory/ssh-agent@v0.9.0
+      - uses: webfactory/ssh-agent@v0.10.0
         with:
           ssh-private-key: ${{ steps.op.outputs.DEPLOY_SSH_KEY }}
 
