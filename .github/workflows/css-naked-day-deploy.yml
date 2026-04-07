@@ -1,0 +1,13 @@
+name: CSS Naked Day Deploy
+
+on:
+  schedule:
+    # Turn naked mode on: Apr 8 10:05 UTC
+    - cron: "5 10 8 4 *"
+    # Turn naked mode off: Apr 10 12:05 UTC
+    - cron: "5 12 10 4 *"
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
