@@ -11,8 +11,6 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
 
     steps:
       - uses: actions/checkout@v6
@@ -24,20 +22,22 @@ jobs:
       - uses: 1password/install-cli-action@v3
 
       - uses: 1password/load-secrets-action@v4
-        with:
-          export-env: true
+        id: op
         env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
           DEPLOY_SSH_KEY: op://annema.me/Hetzner authentication/private key?ssh-format=openssh
           SSH_KNOWN_HOSTS: op://annema.me/Production/known_hosts
 
       - uses: webfactory/ssh-agent@v0.9.0
         with:
-          ssh-private-key: ${{ env.DEPLOY_SSH_KEY }}
+          ssh-private-key: ${{ steps.op.outputs.DEPLOY_SSH_KEY }}
 
       - name: Install pinned known_hosts
         run: |
           install -m 700 -d ~/.ssh
-          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          printf '%s\n' "${{ steps.op.outputs.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
       - run: ./bin/deploy
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
