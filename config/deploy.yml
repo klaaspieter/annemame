@@ -48,7 +48,7 @@ accessories:
       - umami-db-data:/var/lib/postgresql/data
 
   umami:
-    image: docker.umami.is/umami-software/umami:3.0.3
+    image: docker.umami.is/umami-software/umami:3.2.0
     host: annema.me
     env:
       secret:
